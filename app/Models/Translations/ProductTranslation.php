@@ -25,5 +25,9 @@ class ProductTranslation extends BaseTranslationModel
         'meta_title',
         'meta_description',
         'meta_keyword',
+        'head_1',
+        'head_2',
+        'text_1',
+        'text_2'
     ];
 }

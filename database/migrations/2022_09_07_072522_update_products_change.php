@@ -14,6 +14,12 @@ class UpdateProductsChange extends Migration
     public function up()
     {
         //
+        Schema::table('products', function (Blueprint $table) {
+            $table->float('price')->nullable()->change();
+            $table->string('code')->nullable()->change();
+            $table->boolean('stock')->nullable()->change();
+            $table->boolean('popular')->nullable()->change();
+        });
     }
 
     /**
@@ -24,5 +30,12 @@ class UpdateProductsChange extends Migration
     public function down()
     {
         //
+        Schema::table('products', function (Blueprint $table) {
+            $table->float('price')->default(0);
+            $table->string('code')->change();
+            $table->string('payment_type')->nullable();
+            $table->boolean('stock')->change();
+            $table->boolean('popular')->change();
+        });
     }
 }

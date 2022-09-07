@@ -56,7 +56,9 @@ class File extends Model
         'path',
         'format',
         'type',
-        'main'
+        'main',
+        'in_middle_1',
+        'in_middle_2'
     ];
 
     /**

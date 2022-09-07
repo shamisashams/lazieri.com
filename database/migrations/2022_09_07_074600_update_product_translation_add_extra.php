@@ -14,6 +14,12 @@ class UpdateProductTranslationAddExtra extends Migration
     public function up()
     {
         //
+        Schema::table('product_translations', function (Blueprint $table) {
+            $table->string('head_1')->nullable();
+            $table->text('text_1')->nullable();
+            $table->string('head_2')->nullable();
+            $table->text('text_2')->nullable();
+        });
     }
 
     /**
@@ -24,5 +30,11 @@ class UpdateProductTranslationAddExtra extends Migration
     public function down()
     {
         //
+        Schema::table('product_translations', function (Blueprint $table) {
+            $table->dropColumn('head_1');
+            $table->dropColumn('head_2');
+            $table->dropColumn('text_1');
+            $table->dropColumn('text_2');
+        });
     }
 }

@@ -14,6 +14,10 @@ class UpdateFilesAddPos extends Migration
     public function up()
     {
         //
+        Schema::table('files', function (Blueprint $table) {
+            $table->boolean('in_middle_1')->default(0)->nullable();
+            $table->boolean('in_middle_2')->default(0)->nullable();
+        });
     }
 
     /**
@@ -24,5 +28,9 @@ class UpdateFilesAddPos extends Migration
     public function down()
     {
         //
+        Schema::table('files', function (Blueprint $table) {
+            $table->dropColumn('in_middle_1');
+            $table->dropColumn('in_middle_2');
+        });
     }
 }

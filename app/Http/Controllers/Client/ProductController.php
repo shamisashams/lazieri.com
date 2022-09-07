@@ -83,9 +83,29 @@ class ProductController extends Controller
         $product = Product::where(['status' => true, 'slug' => $slug])->whereHas('categories', function (Builder $query) {
             $query->where('status', 1);
 
-        })->with(['latestImage'])->firstOrFail();
+        })->with(['present'])->firstOrFail();
 
-        $productImages = $product->files()->orderBy('id','desc')->get();
+        $present = [
+            'main' => null,
+            'in_middle_1' => null,
+            'in_middle_2' => null
+        ];
+        foreach ($product->present as $item){
+            if($item->main){
+                $present['main'] = $item->file_url_full;
+            }
+            if($item->in_middle_1){
+                $present['in_middle_1'] = $item->file_url_full;
+            }
+            if($item->in_middle_2){
+                $present['in_middle_2'] = $item->file_url_full;
+            }
+
+        }
+
+        //dd($present);
+
+        $productImages = $product->slider()->orderBy('id','desc')->get();
 
         $product_attributes = $product->attribute_values;
 
@@ -217,10 +237,11 @@ class ProductController extends Controller
             'product' => $product
         ]);*/
         return Inertia::render('SingleProject',[
+            'present' => $present,
             'product' => $product,
             'category_path' => $path,
             'similar_products' => $similar_products,
-            'product_images' => $productImages,
+            'slider' => $productImages,
             'product_attributes' => $result,
             "seo" => [
                 "title"=>$product->meta_title,

@@ -2,6 +2,7 @@
 //import sm2 from "../assets/images/sm/2.png";
 //import sm3 from "../assets/images/sm/3.png";
 import React from "react";
+import { usePage } from "@inertiajs/inertia-react";
 
 export const SocialMedia = () => {
   return (
@@ -20,12 +21,22 @@ export const SocialMedia = () => {
 };
 
 export const Languages = () => {
+    const { locales, currentLocale, locale_urls } = usePage().props;
   return (
     <div className="flex items-center justift-center font-bold">
-      <a href="#" className="opacity-50">
-        Geo
-      </a>
-      <div className="underline ml-3">Eng</div>
+        {Object.keys(locales).map((name, index) => {
+            if (locales[name] !== currentLocale) {
+                return (
+                    <a href={locale_urls[name]} key={name + "locale"} className="opacity-50">
+                        {name}
+                    </a>
+                );
+            } else {
+                return <div className="underline ml-3">{name}</div>
+            }
+        })}
+
+
     </div>
   );
 };

@@ -20,9 +20,15 @@ import { Link, usePage } from "@inertiajs/inertia-react";
 const SingleProject = ({seo}) => {
   const imgSlider = ["/client/assets/images/gallery/13.png", "/client/assets/images/gallery/14.png", "/client/assets/images/gallery/12.png", "/client/assets/images/gallery/11.png", "/client/assets/images/gallery/10.png", "/client/assets/images/gallery/9.png", "/client/assets/images/gallery/8.png", "/client/assets/images/gallery/7.png"];
 
-  const {product,category_path} = usePage().props;
+  const {product,category_path,present,slider} = usePage().props;
 
-  console.log(product);
+
+    const renderHTML = (rawHTML) =>
+        React.createElement("p", {
+            dangerouslySetInnerHTML: { __html: rawHTML },
+        });
+
+  console.log(slider);
   return (
       <Layout seo={seo}>
           <div className="wrapper">
@@ -31,7 +37,7 @@ const SingleProject = ({seo}) => {
                   <div className=" lg:text-5xl text-4xl">{product.title}</div>
               </section>
               <section>
-                  <img src="/client/assets/images/gallery/16.png" alt="" />
+                  <img src={present.main} alt="" />
               </section>
               <section className="grid md:grid-cols-2 lg:gap-20 gap-10 sm:my-20 my-10">
                   <div className="flex w-full justify-between">
@@ -65,35 +71,23 @@ const SingleProject = ({seo}) => {
                   </div>
                   <div className="max-w-md">
                       <div className=" lg:text-5xl text-3xl mb-5">
-                          We create comfort and style
+                          {product.head_1}
                       </div>
                       <p className="text-justify">
-                          Lazier is a Georgian brand that has been creating customized
-                          furniture for both corporate clients and individuals since 2013. The
-                          enterprise is equipped with the latest European equipment and works
-                          with high-quality wood, Corian (DuPont Corian®) and Neolith (TheSize
-                          Neolith®) materials. To date, the company has completed more than
-                          five hundred successful projects for individuals and faithfully
-                          serves many large companies in the public and private sectors.
+                          {renderHTML(product.text_1.newLineToBr())}
                       </p>
                   </div>
                   <div>
-                      <img src="/client/assets/images/gallery/14.png" alt="" />
+                      <img src={present.in_middle_1} alt="" />
                       <div className=" lg:text-5xl text-3xl mb-5 mt-10">
-                          The wood texture gives the interior
+                          {product.head_2}
                       </div>
                       <p className="text-justify max-w-md">
-                          Lazier is a Georgian brand that has been creating customized
-                          furniture for both corporate clients and individuals since 2013. The
-                          enterprise is equipped with the latest European equipment and works
-                          with high-quality wood, Corian (DuPont Corian®) and Neolith (TheSize
-                          Neolith®) materials. To date, the company has completed more than
-                          five hundred successful projects for individuals and faithfully
-                          serves many large companies in the public and private sectors.
+                          {renderHTML(product.text_2.newLineToBr())}
                       </p>
                   </div>
                   <div>
-                      <img src="/client/assets/images/gallery/13.png" alt="" />
+                      <img src={present.in_middle_2} alt="" />
                   </div>
               </section>
               <section className="py-20">
@@ -128,13 +122,13 @@ const SingleProject = ({seo}) => {
                           },
                       }}
                   >
-                      {imgSlider.map((item, index) => {
+                      {slider.map((item, index) => {
                           return (
                               <SwiperSlide key={index}>
                                   <div className="h-72 overflow-hidden pb-10">
                                       <img
                                           className="h-full w-full object-cover"
-                                          src={item}
+                                          src={item.file_url_full}
                                           alt=""
                                       />
                                   </div>

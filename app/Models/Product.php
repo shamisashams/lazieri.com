@@ -99,6 +99,10 @@ class Product extends Model implements Searchable
         'meta_title',
         'meta_description',
         'meta_keyword',
+        'head_1',
+        'head_2',
+        'text_1',
+        'text_2'
     ];
 
     //protected $with = ['translation'];
@@ -181,6 +185,14 @@ class Product extends Model implements Searchable
     public function latestImage()
     {
         return $this->morphOne(File::class, 'fileable')->orderBy('main','desc');
+    }
+
+    public function slider(){
+        return $this->morphMany(File::class,'fileable')->where('main',0)->where('in_middle_1',0)->where('in_middle_2',0);
+    }
+
+    public function present(){
+        return $this->morphMany(File::class,'fileable')->where('main',1)->orWhere('in_middle_1',1)->orWhere('in_middle_2',1);
     }
 
 }
