@@ -46,7 +46,7 @@ const Header = () => {
 
   }
 
-  const {categories} = usePage().props;
+  const {categories, localizations} = usePage().props;
 
   //console.log(categories)
 
@@ -80,15 +80,15 @@ const Header = () => {
     lazieri: [
       {
         link: route('client.about.index'),
-        text: "About Us",
+        text: __('client.nav_about',localizations),
       },
       {
         link: route('client.team.index'),
-        text: "Our Team",
+        text: __('client.nav_team',localizations),
       },
       {
         link: route('client.gallery.index'),
-        text: "Gallery",
+        text: __('client.nav_gallery',localizations),
       },
     ],
   };
@@ -122,10 +122,10 @@ const Header = () => {
             } `}
           >
             <li className="pb-8 inline-block font-bold mr-8">
-              <Link href={route('client.home.index')}>Home</Link>
+              <Link href={route('client.home.index')}>{__('client.nav_home',localizations)}</Link>
             </li>
             <li className="pb-8 cursor-pointer  md:inline-block font-bold mr-8 group ">
-              Products{" "}
+                {__('client.nav_products',localizations)}{" "}
               <div className="relative inline-block align-middle">
                 <div className="bg-black h-0.5 w-3"></div>
                 <div className="group-hover:rotate-90 transition absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black w-0.5 h-3"></div>
@@ -145,7 +145,7 @@ const Header = () => {
               </div>
             </li>
             <li className="pb-8 cursor-pointer  md:inline-block font-bold mr-8 group ">
-              Lazieri{" "}
+                {__('client.nav_lazieri',localizations)}{" "}
               <div className="relative inline-block align-middle">
                 <div className="bg-black h-0.5 w-3"></div>
                 <div className="group-hover:rotate-90 transition absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black w-0.5 h-3"></div>
@@ -165,13 +165,13 @@ const Header = () => {
               </div>
             </li>
             <li className="pb-8  md:inline-block font-bold mr-8">
-              <Link href={route('client.service.index')}>Service</Link>
+              <Link href={route('client.service.index')}>{__('client.nav_service',localizations)}</Link>
             </li>
             <li className="pb-8  md:inline-block font-bold mr-8">
-              <Link href={route('client.partner.index')}>Partners</Link>
+              <Link href={route('client.partner.index')}>{__('client.nav_partners',localizations)}</Link>
             </li>
             <li className="pb-8 md:inline-block font-bold mr-8">
-              <Link href={route('client.contact.index')}>Contact</Link>
+              <Link href={route('client.contact.index')}>{__('client.nav_contact',localizations)}</Link>
             </li>
           </ul>
           <div ref={wrapperRef} className="relative">
@@ -195,7 +195,7 @@ const Header = () => {
               <input
                 className="w-full mb-10"
                 type="text"
-                placeholder="Search here"
+                placeholder={__('client.search_placeholder',localizations)}
                 onKeyUp={handleSearch}
               />
 

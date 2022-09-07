@@ -24,6 +24,11 @@ import { FiChevronRight } from "react-icons/fi";
 import Layout from "../Layouts/Layout";
 
 const Home = ({seo}) => {
+
+    const renderHTML = (rawHTML) =>
+        React.createElement("p", {
+            dangerouslySetInnerHTML: { __html: rawHTML },
+        });
   /*const categories = [
     {
       link: "/",
@@ -57,7 +62,7 @@ const Home = ({seo}) => {
     },
   ];*/
 
-    const {categories,gallery,images,special_offer} = usePage().props;
+    const {categories,gallery,images,special_offer, localizations} = usePage().props;
 
   /*const gallery = [
     {
@@ -141,19 +146,13 @@ const Home = ({seo}) => {
               <section className="wrapper flex flex-col md:flex-row md:items-center justify-between pb-20">
                   <div className="xl:pl-20 md:mr-10 mb-10 md:mb-0 max-w-2xl ">
                       <div className="xl:text-7xl lg:text-5xl text-4xl md:mb-10 mb-5">
-                          About us
+                          {__('client.home_about_header',localizations)}
                       </div>
                       <p className="text-justify md:mb-10 mb-5">
-                          There are many variations of passages of Lorem Ipsum available, but
-                          the majority have suffered alteration in some form, by injected
-                          humour, or randomised words which don't look even slightly
-                          believable. There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration in some form,
-                          by injected humour, or randomised words which don't look even
-                          slightly believable.
+                          {renderHTML(__('client.home_about_text',localizations).newLineToBr())}
                       </p>
                       <Link className="text-lg font-bold" href={route('client.about.index')}>
-                          Learn more
+                          {__('client.learn_more',localizations)}
                           <img className="inline-block ml-4" src="/client/assets/images/svg/arrow-left.svg" alt="" />
                       </Link>
                   </div>
@@ -176,7 +175,7 @@ const Home = ({seo}) => {
                                       href={route('client.contact.index')}
                                       className="flex justify-between items-center bg-custom-dark text-white px-4 py-2"
                                   >
-                                      <span>Make an Order</span>
+                                      <span>{__('client.home_make_order',localizations)}</span>
                                       <div className="flex justify-center items-center w-8 h-8 rounded-full bg-white/[0.5] text-custom-dark">
                                           <FiChevronRight />
                                       </div>
@@ -185,17 +184,13 @@ const Home = ({seo}) => {
                           </div>:null}
                           <div className="text-white md:ml-20 max-w-2xl mt-10 md:mt-0">
                               <div className="opacity-md:50">
-                                  There are many variations of passages of Lorem Ipsum available,
-                                  but the majority have suffered alteration in some form, by
-                                  injected humour, or randomised words which don't look even
-                                  slightly believable.
+                                  {renderHTML(__('client.home_special_offer_txt1',localizations).newLineToBr())}
                               </div>
                               <div className="xl:text-7xl lg:text-5xl text-4xl my-6 ">
-                                  Special <br />
-                                  Offer
+                                  {renderHTML(__('client.home_special_offer_txt2',localizations).newLineToBr())}
                               </div>
                               <Link className="text-lg font-bold" href={route('client.category.special')}>
-                                  View All
+                                  {__('client.view_all',localizations)}
                                   <img className="inline-block ml-4" src="/client/assets/images/svg/arrow-left-white.svg" alt="" />
                               </Link>
                           </div>
@@ -205,15 +200,13 @@ const Home = ({seo}) => {
               <section className="wrapper2 py-20">
                   <div className="flex justify-between lg:items-center items-end mb-5 flex-col sm:flex-row">
                       <div className="flex  lg:items-center  flex-col lg:flex-row">
-                          <div className=" xl:text-7xl lg:text-5xl text-4xl ">Gallery</div>
+                          <div className=" xl:text-7xl lg:text-5xl text-4xl ">{__('client.home_gallery',localizations)}</div>
                           <div className="opacity-50 max-w-xl lg:ml-5">
-                              There are many variations of passages of Lorem Ipsum available,
-                              but the majority have suffered alteration in some form, by
-                              injected
+                              {renderHTML(__('client.home_gallery_txt',localizations).newLineToBr())}
                           </div>
                       </div>
                       <Link className="text-lg font-bold" href={route('client.gallery.index')}>
-                          Learn more
+                          {__('client.learn_more',localizations)}
                           <img className="inline-block ml-4" src="/client/assets/images/svg/arrow-left.svg" alt="" />
                       </Link>
                   </div>

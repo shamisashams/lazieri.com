@@ -12,7 +12,7 @@ import { usePage } from "@inertiajs/inertia-react";
 //import Img3 from "../assets/images/hero/3.png";
 
 const HeroSlider = () => {
-    const {sliders} = usePage().props;
+    const {sliders, localizations} = usePage().props;
   const nextRef = useRef(null);
   const data = [
     {
@@ -83,7 +83,7 @@ const HeroSlider = () => {
         ref={nextRef}
         className="xl:text-7xl lg:text-5xl text-4xl absolute sm:top-0 bottom-6 sm:bottom-auto sm:text-inherit text-white sm:right-0 right-2 z-20"
       >
-        Next
+        {__('client.slider_next',localizations)}
       </button>
     </div>
   );
