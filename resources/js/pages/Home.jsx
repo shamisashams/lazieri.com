@@ -57,7 +57,7 @@ const Home = ({seo}) => {
     },
   ];*/
 
-    const {categories,gallery} = usePage().props;
+    const {categories,gallery,images,special_offer} = usePage().props;
 
   /*const gallery = [
     {
@@ -152,28 +152,28 @@ const Home = ({seo}) => {
                           by injected humour, or randomised words which don't look even
                           slightly believable.
                       </p>
-                      <Link className="text-lg font-bold" href="/">
+                      <Link className="text-lg font-bold" href={route('client.about.index')}>
                           Learn more
                           <img className="inline-block ml-4" src="/client/assets/images/svg/arrow-left.svg" alt="" />
                       </Link>
                   </div>
-                  <img className="md:w-1/2" src="/client/assets/images/gallery/13.png" alt="" />
+                  <img className="md:w-1/2" src={images[0]} alt="" />
               </section>
               <section
                   className="wrapper bg-cover bg-center"
-                  style={{ backgroundImage: `url('/client/assets/images/gallery/14.png')` }}
+                  style={{ backgroundImage: `url('${images[1]}')` }}
               >
                   <div className="w-full h-full bg-neutral-900/[0.4] py-20">
                       <div className="wrapper2 flex flex-col md:flex-row md:items-center justify-center">
-                          <div className="p-6 border border-solid border-white shrink-0">
+                          {special_offer ? <div className="p-6 border border-solid border-white shrink-0">
                               <div className="bg-white p-4">
-                                  <div className="opacity-50">Kitchen</div>
+                                  <div className="opacity-50">{special_offer.categories[0].title}</div>
                                   <div className="text-sm mt-2 mb-6">
-                                      Small White Kitchen Chair
+                                      {special_offer.title}
                                   </div>
-                                  <img className="mx-auto" src="/client/assets/images/gallery/15.png" alt="" />
+                                  <img className="mx-auto" src={special_offer.latest_image.file_url_full} alt="" />
                                   <Link
-                                      href="/"
+                                      href={route('client.contact.index')}
                                       className="flex justify-between items-center bg-custom-dark text-white px-4 py-2"
                                   >
                                       <span>Make an Order</span>
@@ -182,7 +182,7 @@ const Home = ({seo}) => {
                                       </div>
                                   </Link>
                               </div>
-                          </div>
+                          </div>:null}
                           <div className="text-white md:ml-20 max-w-2xl mt-10 md:mt-0">
                               <div className="opacity-md:50">
                                   There are many variations of passages of Lorem Ipsum available,
@@ -194,7 +194,7 @@ const Home = ({seo}) => {
                                   Special <br />
                                   Offer
                               </div>
-                              <Link className="text-lg font-bold" href="/">
+                              <Link className="text-lg font-bold" href={route('client.category.special')}>
                                   View All
                                   <img className="inline-block ml-4" src="/client/assets/images/svg/arrow-left-white.svg" alt="" />
                               </Link>

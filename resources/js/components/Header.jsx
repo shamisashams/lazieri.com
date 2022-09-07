@@ -6,11 +6,14 @@ import { Languages, SocialMedia } from "./SmallComps";
 import { FiSearch } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import { RiMenuUnfoldFill } from "react-icons/ri";
+import axios from "axios";
 
 const Header = () => {
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
   const wrapperRef = useRef(null);
+
+  const [result,setResult] = useState([])
 
   useOutsideAlerter(wrapperRef);
   function useOutsideAlerter(ref) {
@@ -26,6 +29,21 @@ const Header = () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [ref]);
+  }
+
+    let interval;
+  function handleSearch(e){
+      clearInterval(interval);
+       interval = setTimeout(function (){
+           if(e.target.value.length > 0){
+               axios.post(route('search.index'),{term:e.target.value}).then(function(response){
+                   console.log(response)
+                   setResult(response.data.data);
+               })
+           } else setResult([]);
+
+      },600)
+
   }
 
   const {categories} = usePage().props;
@@ -79,7 +97,7 @@ const Header = () => {
       <div className="wrapper py-2">
         <div className="flex items-center justify-between ">
           <div className="flex items-center">
-            <Link href="/" className="mr-8">
+            <Link href={route('client.home.index')} className="mr-8">
               <img src="/client/assets/images/logo/1.png" alt="" />
             </Link>
             <SocialMedia />
@@ -178,10 +196,27 @@ const Header = () => {
                 className="w-full mb-10"
                 type="text"
                 placeholder="Search here"
+                onKeyUp={handleSearch}
               />
 
               {/* searched data will appear here 👇🏼 */}
-              <div className="inline-block mr-5 mb-10">
+                {result.map((item, index) => {
+                    return (
+                        <div className="inline-block mr-5 mb-10">
+                            <div className="uppercase mb-4">{item.title}</div>
+                            <Link href={route('client.product.show',item.slug)} className="block mb-1 opacity-70">
+                                {item.text_1}
+                            </Link>
+                            {/*<Link href="/" className="block mb-1 opacity-70">
+                                dfg sghfdg hdfgh
+                            </Link>
+                            <Link href="/" className="block mb-1 opacity-70">
+                                Some link
+                            </Link>*/}
+                        </div>
+                    )
+                })}
+              {/*<div className="inline-block mr-5 mb-10">
                 <div className="uppercase mb-4">products</div>
                 <Link href="/" className="block mb-1 opacity-70">
                   Some link
@@ -216,7 +251,7 @@ const Header = () => {
                 <Link href="/" className="block mb-1 opacity-70">
                   ukghkihjkhjk
                 </Link>
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>

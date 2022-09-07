@@ -25,10 +25,10 @@ class PageSectionsSeeder extends Seeder
                 'key' => 'about'
             ],
             [
-                'key' => 'contact'
+                'key' => 'service'
             ],
             [
-                'key' => 'products'
+                'key' => 'partner'
             ]
 
 
@@ -49,13 +49,19 @@ class PageSectionsSeeder extends Seeder
         foreach ($pages as $item){
             switch ($item->key){
                 case 'home':
-                    for ($i = 0; $i < 3; $i++){
+                    for ($i = 0; $i < 2; $i++){
                         $ins[$key]['page_id'] = $item->id;
                         $key++;
                     }
                     break;
                 case 'about':
                     for ($i = 0; $i < 3; $i++){
+                        $ins[$key]['page_id'] = $item->id;
+                        $key++;
+                    }
+                    break;
+                case 'service':
+                    for ($i = 0; $i < 5; $i++){
                         $ins[$key]['page_id'] = $item->id;
                         $key++;
                     }

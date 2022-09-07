@@ -23,7 +23,7 @@ import { Link, usePage } from "@inertiajs/inertia-react";
 
 const Partners = ({seo}) => {
 
-    const {partners} = usePage().props;
+    const {partners, images} = usePage().props;
     console.log(partners)
   /*const partners = [
     {
@@ -103,7 +103,7 @@ const Partners = ({seo}) => {
       <Layout seo={seo}>
           <>
               <section className="mb-10 lg:h-96 h-60 w-full">
-                  <img src="/client/assets/images/other/3.png" alt="" className="w-full h-full object-cover" />
+                  <img src={images[0]} alt="" className="w-full h-full object-cover" />
               </section>
               <section className="wrapper">
                   <div>Our partners</div>

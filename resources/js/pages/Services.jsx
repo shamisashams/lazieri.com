@@ -6,7 +6,7 @@
 import React from "react";
 import Layout from "../Layouts/Layout";
 
-const Services = ({seo}) => {
+const Services = ({seo, images}) => {
   return (
       <Layout seo={seo}>
           <div className="wrapper pb-20">
@@ -14,7 +14,7 @@ const Services = ({seo}) => {
               <section className="grid lg:grid-cols-2 gap-20 lg:gap-y-72 relative">
                   <img
                       className="lg:block hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  -z-10"
-                      src="/client/assets/images/services/bg.png"
+                      src={images[4]}
                       alt=""
                   />
                   <div className="flex items-end">
@@ -30,7 +30,7 @@ const Services = ({seo}) => {
                           </p>
                       </div>
                       <div className="w-32 h-40 ml-5 overflow-hidden shrink-0">
-                          <img className="w-full h-full object-cover" src="/client/assets/images/services/1.png" alt="" />
+                          <img className="w-full h-full object-cover" src={images[0]} alt="" />
                       </div>
                   </div>
                   <div className="flex items-end lg:-translate-y-20">
@@ -46,12 +46,12 @@ const Services = ({seo}) => {
                           </p>
                       </div>
                       <div className="w-32 h-40 ml-5 overflow-hidden shrink-0">
-                          <img className="w-full h-full object-cover" src="/client/assets/images/services/2.png" alt="" />
+                          <img className="w-full h-full object-cover" src={images[1]} alt="" />
                       </div>
                   </div>
                   <div className="flex items-end">
                       <div className="w-32 h-40 mr-5 overflow-hidden shrink-0">
-                          <img className="w-full h-full object-cover" src="/client/assets/images/services/3.png" alt="" />
+                          <img className="w-full h-full object-cover" src={images[2]} alt="" />
                       </div>
                       <div>
                           <div className="lg:text-5xl text-2xl ">
@@ -67,7 +67,7 @@ const Services = ({seo}) => {
                   </div>
                   <div className="flex items-end  lg:-translate-y-10">
                       <div className="w-32 h-40 mr-5 overflow-hidden shrink-0">
-                          <img className="w-full h-full object-cover" src="/client/assets/images/services/4.png" alt="" />
+                          <img className="w-full h-full object-cover" src={images[3]} alt="" />
                       </div>
                       <div>
                           <div className="lg:text-5xl text-2xl ">

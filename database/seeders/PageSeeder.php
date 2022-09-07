@@ -28,9 +28,19 @@ class PageSeeder extends Seeder
             ],
             [
                 'key' => 'products'
+            ],
+            [
+                'key' => 'team'
+            ],
+            [
+                'key' => 'gallery'
+            ],
+            [
+                'key' => 'service'
+            ],
+            [
+                'key' => 'partner'
             ]
-
-
         ];
 
         // Insert Pages

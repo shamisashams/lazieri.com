@@ -4,13 +4,13 @@
 import React, { useState } from "react";
 import Layout from "../Layouts/Layout";
 
-const About = ({seo}) => {
+const About = ({seo, images}) => {
   const [mvContent, setMvContent] = useState(0);
   return (
       <Layout seo={seo}>
           <>
               <section className="mb-10 lg:h-96 h-60 w-full">
-                  <img src="/client/assets/images/other/2.png" alt="" className="w-full h-full object-cover" />
+                  <img src={images[0]} alt="" className="w-full h-full object-cover" />
               </section>
               <div className="wrapper flex flex-col lg:flex-row">
                   <div className="lg:mr-20 xl:w-1/3">
@@ -24,10 +24,10 @@ const About = ({seo}) => {
                           humour, or randomised words which don't look even slightly
                           believable.
                       </p>
-                      <img src="/client/assets/images/gallery/9.png" alt="" className="mb-10 max-h-96" />
+                      <img src={images[1]} alt="" className="mb-10 max-h-96" />
                   </div>
                   <div>
-                      <img src="/client/assets/images/gallery/10.png" alt="" className="mb-20 max-h-96" />
+                      <img src={images[2]} alt="" className="mb-20 max-h-96" />
                       <div className=" lg:text-5xl text-3xl mb-10  mt-2">
                           Why choose us?
                       </div>

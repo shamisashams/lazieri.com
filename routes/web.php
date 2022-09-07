@@ -136,7 +136,7 @@ Route::prefix('{locale?}')
             Route::get('order/success',[\App\Http\Controllers\Client\OrderController::class,'statusSuccess'])->name('order.success');
             Route::get('order/failure',[\App\Http\Controllers\Client\OrderController::class,'statusFail'])->name('order.failure');
 
-            Route::get('search', [\App\Http\Controllers\Client\SearchController::class, 'index'])->name('search.index');
+            Route::post('search', [\App\Http\Controllers\Client\SearchController::class, 'index'])->name('search.index');
 
             Route::any('payments/bog/status',[\App\Http\Controllers\Client\OrderController::class, 'bogResponse'])->name('bogResponse');
 

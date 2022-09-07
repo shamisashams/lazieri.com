@@ -36,7 +36,7 @@ class SearchController extends Controller
     public function index(string $locale, Request $request)
     {
 
-        $page = Page::where('key', 'search')->firstOrFail();
+        $page = Page::where('key', 'about')->firstOrFail();
 //        return 1;
 
         //dd($category->getAncestors());
@@ -72,44 +72,11 @@ class SearchController extends Controller
         }
 
 
-        $images = [];
-        foreach ($page->sections as $sections){
-            if($sections->file){
-                $images[] = asset($sections->file->getFileUrlAttribute());
-            } else {
-                $images[] = null;
-            }
-
-        }
+        return $products;
 
 
 
 
-        //dd($products);
-
-        //dd($products);
-        return Inertia::render('Products/Products',[
-            'products' => $products,
-            'category' => null,
-            'images' => $images,
-            'filter' => $this->getAttributes(),
-            "seo" => [
-                "title"=>$page->meta_title,
-                "description"=>$page->meta_description,
-                "keywords"=>$page->meta_keyword,
-                "og_title"=>$page->meta_og_title,
-                "og_description"=>$page->meta_og_description,
-//            "image" => "imgg",
-//            "locale" => App::getLocale()
-            ]
-        ])->withViewData([
-            'meta_title' => $page->meta_title,
-            'meta_description' => $page->meta_description,
-            'meta_keyword' => $page->meta_keyword,
-            "image" => $page->file,
-            'og_title' => $page->meta_og_title,
-            'og_description' => $page->meta_og_description
-        ]);
     }
 
     private function getAttributes():array{

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use App\Models\Page;
+use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Support\Facades\App;
 use Inertia\Inertia;
@@ -42,6 +43,8 @@ class HomeController extends Controller
 //        dd($page->file);
 //        dd(App::getLocale());
         $_products = app(ProductRepository::class)->getHomePageProducts();
+
+        $special_offer = Product::with(['latestImage','translation','categories','categories.translation'])->where('special_price_tag',1)->inRandomOrder()->first();
 
         $products = [];
         $products['new_collection'] = [];
@@ -91,6 +94,7 @@ class HomeController extends Controller
         //dd($_gallery);
 
         return Inertia::render('Home', [
+            'special_offer' => $special_offer,
             'gallery' => $_gallery,
             "sliders" => $_slider, "page" => $page, "seo" => [
             "title"=>$page->meta_title,
