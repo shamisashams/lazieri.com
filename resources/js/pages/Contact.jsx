@@ -3,8 +3,9 @@ import Layout from "../Layouts/Layout";
 import { FiMapPin, FiSend } from "react-icons/fi";
 import { BsTelephone } from "react-icons/bs";
 import { SocialMedia } from "../components/SmallComps";
+import { usePage } from "@inertiajs/inertia-react";
 
-const Contact = ({seo}) => {
+const Contact = ({seo , info}) => {
   return (
       <Layout seo={seo}>
           <div className="wrapper">
@@ -16,18 +17,18 @@ const Contact = ({seo}) => {
                               <FiMapPin className="inline-block mr-3 align-middle"/> address
                           </div>
                           <div className="font-bold text-lg mb-6">
-                              Street name #. Tbilisi, Georgia
+                              {info.address}
                           </div>
                           <div className="text-slate-500 font-bold mb-2 text-sm">
                               <BsTelephone className="inline-block mr-3 align-middle"/> Phone
                               number
                           </div>
-                          <div className="font-bold text-lg mb-6">+995 032 2 00 00 00</div>
+                          <div className="font-bold text-lg mb-6">{info.phone}</div>
                           <div className="text-slate-500 font-bold mb-2 text-sm">
                               <FiSend className="inline-block mr-3 align-middle"/> Email
                               address
                           </div>
-                          <div className="font-bold text-lg mb-6">example@mail.com</div>
+                          <div className="font-bold text-lg mb-6">{info.email}</div>
                       </div>
                       <div>
                           <div className="text-slate-500 font-bold mb-3 mt-10">

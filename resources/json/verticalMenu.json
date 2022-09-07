@@ -93,6 +93,13 @@
             "i18n": "order",
             "icon": "g_translate",
             "slug": "orders"
+        },
+        {
+            "url": "subscriber.index",
+            "name": "Subscribers",
+            "i18n": "subs",
+            "icon": "g_subs",
+            "slug": "subscribers"
         }
     ],
     "_comment": [

@@ -89,7 +89,7 @@ Route::prefix('{locale?}')
                 Route::resource('attribute', \App\Http\Controllers\Admin\AttributeController::class);
                 Route::get('attribute/{attribute}/destroy', [\App\Http\Controllers\Admin\AttributeController::class, 'destroy'])->name('attribute.destroy');
 
-
+                Route::get('subscribers', [\App\Http\Controllers\Admin\SubscriberController::class,'index'])->name('subscriber.index');;
 
             });
         });
@@ -143,6 +143,7 @@ Route::prefix('{locale?}')
             });
 
             Route::post('test/filter',[\App\Http\Controllers\TestController::class,'filter']);*/
+            Route::post('subscribe',[\App\Http\Controllers\Client\SubscribeController::class,'subscribe'])->name('client.subscribe.subscribe');
         });
     });
 

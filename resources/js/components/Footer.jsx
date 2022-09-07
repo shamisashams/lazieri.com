@@ -1,12 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 //import map from "../assets/images/other/1.png";
 import { SocialMedia } from "./SmallComps";
 import { IoMdCall, IoMdMail } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { usePage } from "@inertiajs/inertia-react";
+import { Inertia } from '@inertiajs/inertia'
 
 const Footer = () => {
-  const { pathname } = usePage().props;
+  const { pathname, info, errors } = usePage().props;
+
+    const [values, setValues] = useState({
+        email: "",
+    })
+
+    function handleChange(e) {
+        const key = e.target.name;
+        const value = e.target.value
+        setValues(values => ({
+            ...values,
+            [key]: value,
+        }))
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        Inertia.post(route("client.subscribe.subscribe"), values);
+    }
+
 
   return (
     <footer
@@ -28,23 +48,30 @@ const Footer = () => {
         <p className="opacity-50 my-5">
           Register now with our newsletter and get latest updates available
         </p>
-        <form className="flex flex-wrap relative z-10 mb-10">
+        <form onSubmit={handleSubmit} className="flex flex-wrap relative z-10 mb-10">
           <input
             className="sm:h-14 h-10 pl-3  border border-solid border-custom-dark "
             type="text"
             placeholder="Email address"
+            name="email"
+            onChange={handleChange}
           />
+            {errors.email && (
+                <div className="error">
+                    {errors.email}
+                </div>
+            )}
           <button className="sm:h-14  h-10 sm:px-14 px-5 bg-custom-dark text-white ml-3 border border-solid border-custom-dark">
             Subscribe
           </button>
         </form>
         <a href="#" className="font-bold mb-5 block">
           <IoMdMail className="inline-block w-5 h-5 mr-4" />
-          example@mail.com
+            {info.email}
         </a>
         <a href="#" className="font-bold ">
           <IoMdCall className="inline-block w-5 h-5 mr-4" />
-          +995 551 112 331
+            {info.phone}
         </a>
       </div>
     </footer>
