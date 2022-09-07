@@ -8,8 +8,13 @@
 //import Member8 from "../assets/images/team/8.png";
 import React from "react";
 import Layout from "../Layouts/Layout";
+import { usePage } from "@inertiajs/inertia-react";
 
 const Team = ({seo}) => {
+
+    const {team} = usePage().props;
+    console.log(team)
+
   const teamMembers = [
     {
       img: "/client/assets/images/team/1.png",
@@ -57,17 +62,17 @@ const Team = ({seo}) => {
           <div className="wrapper pb-20">
               <div className=" lg:text-5xl text-3xl mb-10 lg:mb-20  ">Our Team</div>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 gap-y-16">
-                  {teamMembers.map((member, index) => {
+                  {team.map((member, index) => {
                       return (
                           <div key={index} className="w-full">
                               <div className="w-full h-96 overflow-hidden">
                                   <img
                                       className="w-full h-full object-cover"
-                                      src={member.img}
+                                      src={member.file.file_url_full}
                                       alt=""
                                   />
                               </div>
-                              <div className="text-xl my-3">{member.name}</div>
+                              <div className="text-xl my-3">{member.name} {member.surname}</div>
                               <div>{member.position}</div>
                           </div>
                       );

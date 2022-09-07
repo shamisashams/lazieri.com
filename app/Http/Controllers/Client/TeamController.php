@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\Page;
+use App\Models\Team;
 use Inertia\Inertia;
 use App\Repositories\Eloquent\GalleryRepository;
 
@@ -35,7 +36,9 @@ class TeamController extends Controller
 
         //dd($files);
 
-        return Inertia::render('Team', ["page" => $page, "seo" => [
+        return Inertia::render('Team', [
+            "team" => Team::with(['translation','file'])->where('status',1)->get(),
+            "page" => $page, "seo" => [
             "title"=>$page->meta_title,
             "description"=>$page->meta_description,
             "keywords"=>$page->meta_keyword,

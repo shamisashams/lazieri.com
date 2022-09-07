@@ -1,11 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import Layout from "../Layouts/Layout";
 import { FiMapPin, FiSend } from "react-icons/fi";
 import { BsTelephone } from "react-icons/bs";
 import { SocialMedia } from "../components/SmallComps";
 import { usePage } from "@inertiajs/inertia-react";
+import { Inertia } from '@inertiajs/inertia'
 
 const Contact = ({seo , info}) => {
+
+    const { errors } = usePage().props;
+
+    const [values, setValues] = useState({
+        full_name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+
+    function handleChange(e) {
+        const key = e.target.name;
+        const value = e.target.value;
+        setValues((values) => ({
+            ...values,
+            [key]: value,
+        }));
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        Inertia.post(route("client.contact.mail"), values);
+    }
+
+    function handleClick(e) {
+        e.preventDefault();
+        Inertia.post(route("client.contact.mail"), values);
+    }
+
   return (
       <Layout seo={seo}>
           <div className="wrapper">
@@ -46,7 +76,7 @@ const Contact = ({seo , info}) => {
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
-                  <form className="max-w-lg lg:mt-0 mt-10">
+                  <form onSubmit={handleSubmit} className="max-w-lg lg:mt-0 mt-10">
                       <div className=" lg:text-5xl text-3xl mb-5  ">Get in touch</div>
                       <p className="opacity-50 mb-7">Tell us how we can help you</p>
 
@@ -54,24 +84,33 @@ const Contact = ({seo , info}) => {
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8"
                           type="text"
                           placeholder="Enter your full name"
+                          name="full_name"
+                          onChange={handleChange}
                       />
-
+                      {errors.full_name && <div>{errors.full_name}</div>}
                       <input
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8"
                           type="text"
                           placeholder="Enter your email address"
+                          name="email"
+                          onChange={handleChange}
                       />
-
+                      {errors.email && <div>{errors.email}</div>}
                       <input
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8"
                           type="text"
                           placeholder="Enter your mobile number"
+                          name="phone"
+                          onChange={handleChange}
                       />
-
+                      {errors.phone && <div>{errors.phone}</div>}
                       <textarea
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8 pt-1"
                           placeholder="Enter message here"
+                          name="message"
+                          onChange={handleChange}
                       />
+                      {errors.message && <div>{errors.message}</div>}
                       <button
                           className="h-12 px-14 bg-custom-dark text-white border border-solid border-custom-dark w-full">
                           Send message
