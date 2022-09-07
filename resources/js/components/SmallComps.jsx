@@ -5,15 +5,17 @@ import React from "react";
 import { usePage } from "@inertiajs/inertia-react";
 
 export const SocialMedia = () => {
+    const {info} = usePage().props;
+    console.log(info)
   return (
     <div className="flex items-center justift-center">
-      <a className="transition hover:-translate-y-1" href="#">
+      <a className="transition hover:-translate-y-1" href={info.facebook}>
         <img src="/client/assets/images/sm/1.png" alt="" />
       </a>
-      <a className="transition hover:-translate-y-1 mx-5" href="#">
+      <a className="transition hover:-translate-y-1 mx-5" href={info.instagram}>
         <img src="/client/assets/images/sm/2.png" alt="" />
       </a>
-      <a className="transition hover:-translate-y-1" href="#">
+      <a className="transition hover:-translate-y-1" href={info.twitter}>
         <img src="/client/assets/images/sm/3.png" alt="" />
       </a>
     </div>
