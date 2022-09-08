@@ -152,7 +152,7 @@ const Gallery = ({seo}) => {
                   >
                       <img
                           className="max-h-full object-contain"
-                          src={gallery[popItem]}
+                          src={gallery.data[popItem].file_url_full}
                           alt=""
                       />
                       <button
