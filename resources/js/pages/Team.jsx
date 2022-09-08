@@ -12,7 +12,7 @@ import { usePage } from "@inertiajs/inertia-react";
 
 const Team = ({seo}) => {
 
-    const {team} = usePage().props;
+    const {team,localizations} = usePage().props;
     console.log(team)
 
   const teamMembers = [
@@ -60,7 +60,7 @@ const Team = ({seo}) => {
   return (
       <Layout seo={seo}>
           <div className="wrapper pb-20">
-              <div className=" lg:text-5xl text-3xl mb-10 lg:mb-20  ">Our Team</div>
+              <div className=" lg:text-5xl text-3xl mb-10 lg:mb-20  ">{__('client.team_title',localizations)}</div>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 gap-y-16">
                   {team.map((member, index) => {
                       return (

@@ -74,20 +74,6 @@
             "slug": "translation"
         },
         {
-            "url": "password.index",
-            "name": "პაროლის შეცვლა",
-            "i18n": "change password",
-            "icon": "g_translate",
-            "slug": "change_password"
-        },
-        {
-            "url": "order.index",
-            "name": "შეკვეთები",
-            "i18n": "order",
-            "icon": "g_translate",
-            "slug": "orders"
-        },
-        {
             "url": "partner.index",
             "name": "partners",
             "i18n": "order",
@@ -107,6 +93,13 @@
             "i18n": "team",
             "icon": "team",
             "slug": "team"
+        },
+        {
+            "url": "password.index",
+            "name": "პაროლის შეცვლა",
+            "i18n": "change password",
+            "icon": "g_translate",
+            "slug": "change_password"
         }
     ],
     "_comment": [

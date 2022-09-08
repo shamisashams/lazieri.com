@@ -55,8 +55,14 @@ const Gallery = ({seo}) => {
     }, [ref]);
   }
 
-  const {gallery} = usePage().props;
-console.log(gallery)
+  const {gallery,localizations} = usePage().props;
+//console.log(gallery)
+
+    const renderHTML = (rawHTML) =>
+        React.createElement("p", {
+            dangerouslySetInnerHTML: { __html: rawHTML },
+        });
+
 
     let links = function (links) {
         let rows = [];
@@ -112,10 +118,9 @@ console.log(gallery)
       <Layout seo={seo}>
           <>
               <div className="wrapper flex  lg:items-center justify-between  flex-col lg:flex-row">
-                  <div className=" xl:text-7xl lg:text-5xl text-4xl ">Gallery</div>
+                  <div className=" xl:text-7xl lg:text-5xl text-4xl ">{__('client.gallery_title',localizations)}</div>
                   <div className="opacity-50 max-w-xl ">
-                      There are many variations of passages of Lorem Ipsum available, but
-                      the majority have suffered alteration in some form, by injected
+                      {renderHTML(__('client.gallery_text',localizations).newLineToBr())}
                   </div>
               </div>
               <section className=" py-10">

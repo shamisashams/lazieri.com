@@ -3,9 +3,17 @@
 //import bg from "../assets/images/other/2.png";
 import React, { useState } from "react";
 import Layout from "../Layouts/Layout";
+import { usePage } from "@inertiajs/inertia-react";
 
 const About = ({seo, images}) => {
   const [mvContent, setMvContent] = useState(0);
+
+  const {localizations} = usePage().props;
+
+    const renderHTML = (rawHTML) =>
+        React.createElement("p", {
+            dangerouslySetInnerHTML: { __html: rawHTML },
+        });
   return (
       <Layout seo={seo}>
           <>
@@ -14,28 +22,22 @@ const About = ({seo, images}) => {
               </section>
               <div className="wrapper flex flex-col lg:flex-row">
                   <div className="lg:mr-20 xl:w-1/3">
-                      <div className="opacity-50 text-xl">About Us</div>
+                      <div className="opacity-50 text-xl">{__('client.about_title',localizations)}</div>
                       <div className=" lg:text-5xl text-3xl mb-10 lg:mb-20  mt-2">
-                          We create comfort <br /> and style
+                          {renderHTML(__('client.about_h1',localizations).newLineToBr())}
                       </div>
                       <p className="opacity-50 text-justify mb-24 max-w-sm">
-                          There are many variations of passages of Lorem Ipsum available, but
-                          the majority have suffered alteration in some form, by injected
-                          humour, or randomised words which don't look even slightly
-                          believable.
+                          {renderHTML(__('client.about_text1',localizations).newLineToBr())}
                       </p>
                       <img src={images[1]} alt="" className="mb-10 max-h-96" />
                   </div>
                   <div>
                       <img src={images[2]} alt="" className="mb-20 max-h-96" />
                       <div className=" lg:text-5xl text-3xl mb-10  mt-2">
-                          Why choose us?
+                          {renderHTML(__('client.about_h2',localizations).newLineToBr())}
                       </div>
                       <p className="opacity-50 text-justify mb-14 max-w-md">
-                          There are many variations of passages of Lorem Ipsum available, but
-                          the majority have suffered alteration in some form, by injected
-                          humour, or randomised words which don't look even slightly
-                          believable.
+                          {renderHTML(__('client.about_text1',localizations).newLineToBr())}
                       </p>
                       <div className="flex mb-5">
                           <button
@@ -44,7 +46,7 @@ const About = ({seo, images}) => {
                                   mvContent === 0 ? "opacity-100" : "opacity-50"
                               }`}
                           >
-                              Mission
+                              {__('client.about_tab1_title',localizations)}
                           </button>
                           <button
                               onClick={() => setMvContent(1)}
@@ -52,35 +54,22 @@ const About = ({seo, images}) => {
                                   mvContent === 1 ? "opacity-100" : "opacity-50"
                               } `}
                           >
-                              Vision
+                              {__('client.about_tab2_title',localizations)}
                           </button>
                       </div>
                       {mvContent === 0 ? (
                           <>
                               <p className="opacity-50 text-justify mb-5 max-w-md">
-                                  There are many variations of passages of Lorem Ipsum available,
-                                  but the majority have suffered alteration in some form, by
-                                  injected humour, or randomised words which don't look even
-                                  slightly believable.
+                                  {renderHTML(__('client.about_tab1_p1',localizations).newLineToBr())}
                               </p>
                               <p className="opacity-50 text-justify mb-5 max-w-md">
-                                  There are many variations of passages of Lorem Ipsum available,
-                                  but the majority have suffered alteration in some form, by
-                                  injected humour, or randomised words which don't look even
-                                  slightly believable.
+                                  {renderHTML(__('client.about_tab1_p2',localizations).newLineToBr())}
                               </p>
                           </>
                       ) : (
                           <>
                               <p className="opacity-50 text-justify mb-5 max-w-md">
-                                  Lazier is a Georgian brand that has been creating customized
-                                  furniture for both corporate clients and individuals since 2013.
-                                  The enterprise is equipped with the latest European equipment
-                                  and works with high-quality wood, Corian (DuPont Corian®) and
-                                  Neolith (TheSize Neolith®) materials. To date, the company has
-                                  completed more than five hundred successful projects for
-                                  individuals and faithfully serves many large companies in the
-                                  public and private sectors.
+                                  {renderHTML(__('client.about_tab2_p1',localizations).newLineToBr())}
                               </p>
                           </>
                       )}

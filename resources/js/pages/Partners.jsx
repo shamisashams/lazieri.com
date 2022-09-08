@@ -23,7 +23,7 @@ import { Link, usePage } from "@inertiajs/inertia-react";
 
 const Partners = ({seo}) => {
 
-    const {partners, images} = usePage().props;
+    const {partners, images, localizations} = usePage().props;
     console.log(partners)
   /*const partners = [
     {
@@ -99,6 +99,12 @@ const Partners = ({seo}) => {
       name: "co Name",
     },
   ];*/
+
+    const renderHTML = (rawHTML) =>
+        React.createElement("p", {
+            dangerouslySetInnerHTML: { __html: rawHTML },
+        });
+
   return (
       <Layout seo={seo}>
           <>
@@ -106,10 +112,9 @@ const Partners = ({seo}) => {
                   <img src={images[0]} alt="" className="w-full h-full object-cover" />
               </section>
               <section className="wrapper">
-                  <div>Our partners</div>
+                  <div>{__('client.partners_title',localizations)}</div>
                   <div className=" lg:text-5xl text-3xl mb-10 lg:mb-20  ">
-                      We are trusted by many <br />
-                      leading companies in Georgia
+                      {renderHTML(__('client.partners_title2',localizations).newLineToBr())}
                   </div>
                   <div className="block pb-40 text-center lg:text-left">
                       {partners.map((partner, index) => {

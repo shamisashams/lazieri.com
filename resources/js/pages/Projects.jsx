@@ -80,7 +80,7 @@ const Projects = ({seo}) => {
     },
   ];
 
-  const {category, categories, pathname, products} = usePage().props;
+  const {category, categories, pathname, products, localizations} = usePage().props;
 
   console.log(products)
 
@@ -146,7 +146,7 @@ const Projects = ({seo}) => {
           <>
               <section className="wrapper">
                   <div className="flex justify-between lg:items-center flex-col lg:flex-row">
-                      <div className="opacity-50 text-lg mb-3">Our Projects</div>
+                      <div className="opacity-50 text-lg mb-3">{__('client.products_title',localizations)}</div>
                       <div>
                           <Link
                               key={0}
@@ -157,7 +157,7 @@ const Projects = ({seo}) => {
                               }`}
                               href={route('client.category.index')}
                           >
-                              {'all_projects'}
+                              {__('client.all_products',localizations)}
                           </Link>
                           {categories.map((item, index) => {
                               return (
@@ -183,7 +183,7 @@ const Projects = ({seo}) => {
                               }`}
                               href={route('client.category.special')}
                           >
-                              {'special_offer'}
+                              {__('client.special_offer',localizations)}
                           </Link>
                       </div>
                   </div>
@@ -203,7 +203,7 @@ const Projects = ({seo}) => {
                               </Link>
                               <div className="flex justify-between text-sm opacity-50 mb-2 mt-6  ">
                                   <span>{item.categories[0].title}</span>
-                                  <span>date: {Moment(item.created_at).format('DD.MM.YYYY')}</span>
+                                  <span>{__('client.date',localizations)}: {Moment(item.created_at).format('DD.MM.YYYY')}</span>
                               </div>
                               <div>{item.title}</div>
                           </div>

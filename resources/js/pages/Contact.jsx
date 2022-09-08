@@ -8,7 +8,7 @@ import { Inertia } from '@inertiajs/inertia'
 
 const Contact = ({seo , info}) => {
 
-    const { errors } = usePage().props;
+    const { errors, localizations } = usePage().props;
 
     const [values, setValues] = useState({
         full_name: "",
@@ -39,23 +39,23 @@ const Contact = ({seo , info}) => {
   return (
       <Layout seo={seo}>
           <div className="wrapper">
-              <div className="xl:text-7xl lg:text-5xl text-4xl mb-14">Contact</div>
+              <div className="xl:text-7xl lg:text-5xl text-4xl mb-14">{__('client.contact_title',localizations)}</div>
               <div className="flex justify-between items-stretch pb-20 lg:flex-nowrap flex-wrap">
                   <div className="shrink-0 flex flex-col justify-between">
                       <div>
                           <div className="text-slate-500 font-bold mb-2 text-sm">
-                              <FiMapPin className="inline-block mr-3 align-middle"/> address
+                              <FiMapPin className="inline-block mr-3 align-middle"/> {__('client.address',localizations)}
                           </div>
                           <div className="font-bold text-lg mb-6">
                               {info.address}
                           </div>
                           <div className="text-slate-500 font-bold mb-2 text-sm">
-                              <BsTelephone className="inline-block mr-3 align-middle"/> Phone
+                              <BsTelephone className="inline-block mr-3 align-middle"/> {__('client.phone',localizations)}
                               number
                           </div>
                           <div className="font-bold text-lg mb-6">{info.phone}</div>
                           <div className="text-slate-500 font-bold mb-2 text-sm">
-                              <FiSend className="inline-block mr-3 align-middle"/> Email
+                              <FiSend className="inline-block mr-3 align-middle"/> {__('client.email',localizations)}
                               address
                           </div>
                           <div className="font-bold text-lg mb-6">{info.email}</div>
@@ -63,7 +63,7 @@ const Contact = ({seo , info}) => {
                       <div>
                           <div className="text-slate-500 font-bold mb-3 mt-10">
                               {" "}
-                              Social links
+                              {__('client.social',localizations)}
                           </div>
                           <SocialMedia/>
                       </div>
@@ -77,13 +77,13 @@ const Contact = ({seo , info}) => {
                       referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                   <form onSubmit={handleSubmit} className="max-w-lg lg:mt-0 mt-10">
-                      <div className=" lg:text-5xl text-3xl mb-5  ">Get in touch</div>
-                      <p className="opacity-50 mb-7">Tell us how we can help you</p>
+                      <div className=" lg:text-5xl text-3xl mb-5  ">{__('client.contact_form_h',localizations)}</div>
+                      <p className="opacity-50 mb-7">{__('client.contact_form_txt',localizations)}</p>
 
                       <input
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8"
                           type="text"
-                          placeholder="Enter your full name"
+                          placeholder={__('client.contact_form_name',localizations)}
                           name="full_name"
                           onChange={handleChange}
                       />
@@ -91,7 +91,7 @@ const Contact = ({seo , info}) => {
                       <input
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8"
                           type="text"
-                          placeholder="Enter your email address"
+                          placeholder={__('client.contact_form_email',localizations)}
                           name="email"
                           onChange={handleChange}
                       />
@@ -99,7 +99,7 @@ const Contact = ({seo , info}) => {
                       <input
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8"
                           type="text"
-                          placeholder="Enter your mobile number"
+                          placeholder={__('client.contact_form_phone',localizations)}
                           name="phone"
                           onChange={handleChange}
                       />
@@ -107,13 +107,13 @@ const Contact = ({seo , info}) => {
                       <textarea
                           className="text-sm border-b border-solid border-gray-500 outline-0 w-full  mb-5 h-8 pt-1"
                           placeholder="Enter message here"
-                          name="message"
+                          name={__('client.contact_form_message',localizations)}
                           onChange={handleChange}
                       />
                       {errors.message && <div>{errors.message}</div>}
                       <button
                           className="h-12 px-14 bg-custom-dark text-white border border-solid border-custom-dark w-full">
-                          Send message
+                          {__('client.contact_form_send_btn',localizations)}
                       </button>
                   </form>
               </div>
