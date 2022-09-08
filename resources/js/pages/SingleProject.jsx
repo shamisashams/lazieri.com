@@ -20,7 +20,7 @@ import { Link, usePage } from "@inertiajs/inertia-react";
 const SingleProject = ({seo}) => {
   const imgSlider = ["/client/assets/images/gallery/13.png", "/client/assets/images/gallery/14.png", "/client/assets/images/gallery/12.png", "/client/assets/images/gallery/11.png", "/client/assets/images/gallery/10.png", "/client/assets/images/gallery/9.png", "/client/assets/images/gallery/8.png", "/client/assets/images/gallery/7.png"];
 
-  const {product,category_path,present,slider} = usePage().props;
+  const {product,category_path,present,slider, localizations} = usePage().props;
 
 
     const renderHTML = (rawHTML) =>
@@ -42,7 +42,7 @@ const SingleProject = ({seo}) => {
               <section className="grid md:grid-cols-2 lg:gap-20 gap-10 sm:my-20 my-10">
                   <div className="flex w-full justify-between">
                       <div>
-                          <div className="opacity-50 ">Date</div>
+                          <div className="opacity-50 ">{__('client.date',localizations)}</div>
                           <div className="sm:text-2xl text-lg sm:mb-5 mb-3">{Moment(product.created_at).format('DD.MM.YYYY')}</div>
                           {/*<div className="opacity-50 ">Customer</div>
                           <div className="sm:text-2xl text-lg sm:mb-5 mb-3">
