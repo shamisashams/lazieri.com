@@ -36,6 +36,7 @@ export default function Layout({ children, seo = null }) {
             <Header />
             {children}
             <Footer />
+
             {/*</Fragment>*/}
             {/*</Router>*/}
         </>

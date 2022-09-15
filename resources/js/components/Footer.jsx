@@ -40,7 +40,7 @@ const Footer = () => {
                 alt=""
             />
             <div className="wrapper2 relative z-20 ">
-                <div className="mb-10 flex items-center">
+                <div className="mb-10 flex items-center justify-start">
                     <span className="mr-5">
                         {" "}
                         {__("client.footer_follow_us", localizations)}

@@ -1,17 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-//import Img1 from "../assets/images/gallery/1.png";
-//import Img2 from "../assets/images/gallery/2.png";
-//import Img3 from "../assets/images/gallery/3.png";
-//import Img4 from "../assets/images/gallery/4.png";
-//import Img5 from "../assets/images/gallery/5.png";
-//import Img6 from "../assets/images/gallery/6.png";
-//import Img7 from "../assets/images/gallery/7.png";
-//import Img8 from "../assets/images/gallery/8.png";
-//import Img9 from "../assets/images/gallery/9.png";
-//import Img10 from "../assets/images/gallery/10.png";
-//import Img11 from "../assets/images/gallery/11.png";
-//import Img12 from "../assets/images/gallery/12.png";
-//import Img13 from "../assets/images/gallery/13.png";
 import { IoMdClose } from "react-icons/io";
 import Layout from "../Layouts/Layout";
 import { Link, usePage } from "@inertiajs/inertia-react";
@@ -19,21 +6,7 @@ import { Link, usePage } from "@inertiajs/inertia-react";
 const Gallery = ({ seo }) => {
     const [showPopup, setShowPopup] = useState(false);
     const [popItem, setPopItem] = useState(0);
-    /*const gallery = [
-    "/client/assets/images/gallery/1.png",
-    "/client/assets/images/gallery/2.png",
-    "/client/assets/images/gallery/3.png",
-    "/client/assets/images/gallery/4.png",
-    "/client/assets/images/gallery/5.png",
-    "/client/assets/images/gallery/6.png",
-    "/client/assets/images/gallery/7.png",
-    "/client/assets/images/gallery/8.png",
-    "/client/assets/images/gallery/9.png",
-    "/client/assets/images/gallery/10.png",
-    "/client/assets/images/gallery/11.png",
-    "/client/assets/images/gallery/12.png",
-    "/client/assets/images/gallery/13.png",
-  ];*/
+
     const openPopup = (index) => {
         setPopItem(index);
         setShowPopup(true);

@@ -178,7 +178,7 @@ const Home = ({ seo }) => {
                         {gallery.map((item, index) => {
                             return (
                                 <Link
-                                    href={item.link}
+                                    href={route("client.gallery.index")}
                                     key={index}
                                     className="relative sm:h-80 h-auto flex-grow group"
                                 >
