@@ -52,7 +52,7 @@ const HeroSlider = () => {
                 }}
                 grabCursor={true}
                 modules={[EffectFade, Pagination, Navigation]}
-                className="heroSwiper w-full"
+                className="heroSwiper w-full "
                 onInit={(swiper) => {
                     swiper.params.navigation.nextEl = nextRef.current;
                     swiper.navigation.init();
@@ -63,7 +63,7 @@ const HeroSlider = () => {
                     return (
                         <SwiperSlide
                             key={index}
-                            className="overflow-hidden bg-white"
+                            className="overflow-hidden bg-white flex flex-col justify-between items-start self-stretch h-auto"
                         >
                             <div className="bg-white mb-5 flex xl:items-center items-start justify-between sm:pr-40 flex-col xl:flex-row">
                                 <div className="xl:text-5xl lg:text-4xl sm:text-3xl text-xl whitespace-nowrap heroTitle transition-all duration-1000 mr-3">
@@ -74,7 +74,7 @@ const HeroSlider = () => {
                                 </p>
                             </div>
 
-                            <div className="overflow-hidden transition-all duration-1000 heroImg">
+                            <div className="overflow-hidden transition-all duration-1000 heroImg w-full">
                                 <img
                                     className="w-full h-full object-cover"
                                     src={item.file}

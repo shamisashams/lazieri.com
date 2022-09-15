@@ -149,6 +149,9 @@ img {
 .heroSwiper .swiper-slide-active .heroTitle {
     transform: translateX(0);
 }
+.heroSwiper .swiper-wrapper {
+    align-items: stretch;
+}
 @media screen and (max-width: 640px) {
     .heroSwiper .swiper-pagination {
         bottom: 6px;
