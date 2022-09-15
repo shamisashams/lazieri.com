@@ -92,7 +92,7 @@ class HandleInertiaRequests extends Middleware
             $result[$key]['position'] = $category->position;
             $result[$key]['children'] = [];
             $result[$key]['files'] = $category->files;
-            $result[$key]['file'] = asset($category->file->getFileUrlAttribute());
+            $result[$key]['file'] = $category->file ? asset($category->file->getFileUrlAttribute()) : null;
             if(count($category->children)){
                 $result[$key]['children'] = $this->buildTree($category->children);
             }
