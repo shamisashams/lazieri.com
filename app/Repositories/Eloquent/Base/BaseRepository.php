@@ -189,12 +189,36 @@ class BaseRepository implements EloquentRepositoryInterface
                 $imagename = date('Ymhs') . str_replace(' ', '', $file->getClientOriginalName());
                 $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $this->model->id;
                 $request->file('images')[$key]->move($destination, $imagename);
+
+                $main = 0;
+                $cover = 0;
+                $middle_1 = 0;
+                $middle_2 = 0;
+
+                switch ($key){
+                    case 0:
+                        $main = 1;
+                        break;
+                    case 1:
+                        $cover = 1;
+                        break;
+                    case 2:
+                        $middle_1 = 1;
+                        break;
+                    case 3:
+                        $middle_2 = 1;
+                        break;
+                }
+
                 $this->model->files()->create([
                     'title' => $imagename,
                     'path' => 'storage/' . $modelName . '/' . $this->model->id,
                     'format' => $file->getClientOriginalExtension(),
                     'type' => File::FILE_DEFAULT,
-                    'main' => 0
+                    'main' => $main,
+                    'cover' => $cover,
+                    'in_middle_1' => $middle_1,
+                    'in_middle_2' => $middle_2
                 ]);
             }
         }
