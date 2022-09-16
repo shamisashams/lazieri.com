@@ -88,7 +88,8 @@ class ProductController extends Controller
         $present = [
             'main' => null,
             'in_middle_1' => null,
-            'in_middle_2' => null
+            'in_middle_2' => null,
+            'cover' => null
         ];
         foreach ($product->present as $item){
             if($item->main){
@@ -100,7 +101,9 @@ class ProductController extends Controller
             if($item->in_middle_2){
                 $present['in_middle_2'] = $item->file_url_full;
             }
-
+            if($item->cover){
+                $present['cover'] = $item->file_url_full;
+            }
         }
 
         //dd($present);

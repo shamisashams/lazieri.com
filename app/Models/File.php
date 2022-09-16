@@ -57,6 +57,7 @@ class File extends Model
         'format',
         'type',
         'main',
+        'cover',
         'in_middle_1',
         'in_middle_2'
     ];

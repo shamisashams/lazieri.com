@@ -178,6 +178,7 @@ class BaseRepository implements EloquentRepositoryInterface
         $this->model->files()->where('id',$request->post('main'))->update(['main'=>1]);
         $this->model->files()->where('id',$request->post('in_middle_1'))->update(['in_middle_1'=>1]);
         $this->model->files()->where('id',$request->post('in_middle_2'))->update(['in_middle_2'=>1]);
+        $this->model->files()->where('id',$request->post('cover'))->update(['cover'=>1]);
 
         if ($request->hasFile('images')) {
             // Get Name Of model

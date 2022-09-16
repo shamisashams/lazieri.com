@@ -493,6 +493,7 @@ $traverse = function ($categories, $prefix = '-') use (&$traverse,$ids) {
                                         <div style="position: absolute;z-index: 10;background-color: #fff">
                                             <input type="hidden" name="old_images[]"  value="{{$item->id}}">
                                             <label class="rdiobox"><input name="main" value="{{$item->id}}" name="rdio" type="radio" {{$item->main ? 'checked':''}}> <span>Main</span></label>
+                                            <label class="rdiobox"><input name="cover" value="{{$item->id}}" name="rdio" type="radio" {{$item->cover ? 'checked':''}}> <span>Cover</span></label>
                                             <label class="rdiobox"><input name="in_middle_1" value="{{$item->id}}" name="rdio" type="radio" {{$item->in_middle_1 ? 'checked':''}}> <span>in middle 1</span></label>
                                             <label class="rdiobox"><input name="in_middle_2" value="{{$item->id}}" name="rdio" type="radio" {{$item->in_middle_2 ? 'checked':''}}> <span>in middle 2</span></label>
                                             <button type="button" class="btn" data-rm_img="{{$item->id}}">remove</button>

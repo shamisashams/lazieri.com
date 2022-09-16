@@ -30,7 +30,7 @@ const SingleProject = ({ seo }) => {
                 <section className="lg:h-96 h-72">
                     <img
                         className="w-full h-full object-cover"
-                        src={present.main}
+                        src={present.cover}
                         alt=""
                     />
                 </section>

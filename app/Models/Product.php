@@ -192,7 +192,8 @@ class Product extends Model implements Searchable
     }
 
     public function present(){
-        return $this->morphMany(File::class,'fileable')->where('main',1)->orWhere('in_middle_1',1)->orWhere('in_middle_2',1);
+        return $this->morphMany(File::class,'fileable')->where('main',1)->orWhere('in_middle_1',1)->orWhere('in_middle_2',1)
+            ->orWhere('cover',1);
     }
 
 }
