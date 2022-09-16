@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import { EffectFade, Pagination, Navigation } from "swiper";
+import { Autoplay, EffectFade, Pagination, Navigation } from "swiper";
 import { usePage } from "@inertiajs/inertia-react";
 
 //import Img1 from "../assets/images/hero/1.png";
@@ -50,8 +50,12 @@ const HeroSlider = () => {
                 pagination={{
                     clickable: true,
                 }}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }}
                 grabCursor={true}
-                modules={[EffectFade, Pagination, Navigation]}
+                modules={[Autoplay, EffectFade, Pagination, Navigation]}
                 className="heroSwiper w-full "
                 onInit={(swiper) => {
                     swiper.params.navigation.nextEl = nextRef.current;
@@ -65,7 +69,7 @@ const HeroSlider = () => {
                             key={index}
                             className="overflow-hidden bg-white flex flex-col justify-between items-start self-stretch h-auto"
                         >
-                            <div className="bg-white mb-5 flex xl:items-center items-start justify-between sm:pr-40 flex-col xl:flex-row">
+                            <div className="bg-white w-full mb-5 flex xl:items-center items-start justify-between sm:pr-40 flex-col xl:flex-row">
                                 <div className="xl:text-5xl lg:text-4xl sm:text-3xl text-xl whitespace-nowrap heroTitle transition-all duration-1000 mr-3">
                                     {item.title}
                                 </div>
