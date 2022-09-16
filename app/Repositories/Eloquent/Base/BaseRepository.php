@@ -164,7 +164,7 @@ class BaseRepository implements EloquentRepositoryInterface
         if (count($this->model->files)) {
 
             foreach ($this->model->files as $file) {
-                $file->update(['main' => 0]);
+                $file->update(['main' => 0,'cover' => 0,'in_middle_1' => 0,'in_middle_2' => 0]);
                 if (!$request->old_images) {
                     $file->delete();
                     continue;
