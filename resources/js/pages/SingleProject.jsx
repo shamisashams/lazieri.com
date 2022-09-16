@@ -91,7 +91,7 @@ const SingleProject = ({ seo }) => {
                             {product.head_1}
                         </div>
                         <p className="text-justify">
-                            {product.text_1 ?? renderHTML(product.text_1.newLineToBr())}
+                            {product.text_1 ? renderHTML(product.text_1.newLineToBr()) :null}
                         </p>
                     </div>
                     <div>
@@ -104,7 +104,7 @@ const SingleProject = ({ seo }) => {
                             {product.head_2}
                         </div>
                         <p className="text-justify max-w-md">
-                            {product.text_2 ?? renderHTML(product.text_2.newLineToBr())}
+                            {product.text_2 ? renderHTML(product.text_2.newLineToBr()) : null}
                         </p>
                     </div>
                     <div>
