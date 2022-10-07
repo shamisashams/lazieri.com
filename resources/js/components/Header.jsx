@@ -102,6 +102,7 @@ const Header = () => {
                             className="mr-8"
                         >
                             <img
+                            style={{width: '100px'}}
                                 src="/client/assets/images/logo/1.png"
                                 alt=""
                             />
