@@ -37,7 +37,7 @@ const About = ({seo, images}) => {
                           {renderHTML(__('client.about_h2',localizations).newLineToBr())}
                       </div>
                       <p className="opacity-50 text-justify mb-14 max-w-md">
-                          {renderHTML(__('client.about_text1',localizations).newLineToBr())}
+                          {renderHTML(__('client.about_text2',localizations).newLineToBr())}
                       </p>
                       <div className="flex mb-5">
                           <button
