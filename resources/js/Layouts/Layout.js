@@ -11,6 +11,7 @@ import setSeoData from "./SetSeoData";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Aos from "aos";
 import { usePage } from "@inertiajs/inertia-react";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function Layout({ children, seo = null }) {
     if (seo) {
@@ -30,15 +31,10 @@ export default function Layout({ children, seo = null }) {
     // }
 
     return (
-        <>
-            {/*<Router>*/}
-            {/*<Fragment>*/}
+        <ScrollToTop>
             <Header />
             {children}
             <Footer />
-
-            {/*</Fragment>*/}
-            {/*</Router>*/}
-        </>
+        </ScrollToTop>
     );
 }
