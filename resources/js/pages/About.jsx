@@ -36,7 +36,6 @@ const About = ({ seo, images }) => {
                                     localizations
                                 ).newLineToBr()
                             )}
-                            ლაზიერი" ქართული ბრენდია
                         </div>
                         <p className="opacity-50 text-justify mb-24 ">
                             {renderHTML(
@@ -45,14 +44,6 @@ const About = ({ seo, images }) => {
                                     localizations
                                 ).newLineToBr()
                             )}
-                            ლაზიერი ქართული ბრენდია, რომელიც 2013 წლიდან
-                            ოპერირებს ბაზარზე და ქმნის ინდივიდუალურ მოთხოვნებზე
-                            მორგებულ ავეჯს, როგორც კორპორატიული
-                            მომხმარებლებისთვის, ისე ფიზიკური პირებისთვისაც.
-                            საწარმო აღჭურვილია უახლესი ევროპული დანადგარებით და
-                            მუშაობს მაღალი ხარისხის ხის, კორიანის (DuPont's
-                            Corian), ნეოლითის (The Size's Neolith), მეტალისა და
-                            კომპოზიტური მასალებით.
                         </p>
                         <img
                             src={images[1]}
@@ -62,12 +53,11 @@ const About = ({ seo, images }) => {
                     </div>
                     <div>
                         <img
-                            // src={images[2]}
-                            src="https://lazieri.com/storage/PageSection/5/2022091201abaout.png"
+                            src={images[2]}
                             alt=""
                             className="mb-20 max-h-96"
                         />
-                        <div className=" lg:text-5xl text-3xl mb-10  mt-2">
+                        <div className=" 2xl:text-5xl  lg:text-4xl text-3xl  mb-10  mt-2">
                             {renderHTML(
                                 __(
                                     "client.about_h2",
