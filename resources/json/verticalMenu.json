@@ -75,21 +75,21 @@
         },
         {
             "url": "partner.index",
-            "name": "partners",
+            "name": "პარტნიორები",
             "i18n": "order",
             "icon": "g_translate",
             "slug": "orders"
         },
         {
             "url": "subscriber.index",
-            "name": "Subscribers",
+            "name": "გამომწერები",
             "i18n": "subs",
             "icon": "g_subs",
             "slug": "subscribers"
         },
         {
             "url": "team.index",
-            "name": "team",
+            "name": "გუნდი",
             "i18n": "team",
             "icon": "team",
             "slug": "team"
