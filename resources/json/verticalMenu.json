@@ -47,7 +47,7 @@
         },
         {
             "url": "gallery.index",
-            "name": "gallery",
+            "name": "გალერია",
             "i18n": "gallery",
             "icon": "gallery",
             "slug": "gallery"
