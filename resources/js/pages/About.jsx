@@ -30,29 +30,19 @@ const About = ({ seo, images }) => {
                             {__("client.about_title", localizations)}
                         </div>
                         <div className=" 2xl:text-5xl  lg:text-4xl text-3xl mb-10 2xl:mb-20 lg:mb-10  mt-2">
-                            {renderHTML(
-                                __(
-                                    "client.about_h1",
-                                    localizations
-                                ).newLineToBr()
-                            )}
-                            ლაზიერი" ქართული ბრენდია
+                            {renderHTML(__("client.about_h1",localizations).newLineToBr())}
+                            {/* ლაზიერი" ქართული ბრენდია */}
                         </div>
                         <p className="opacity-50 text-justify mb-24 ">
-                            {renderHTML(
-                                __(
-                                    "client.about_text1",
-                                    localizations
-                                ).newLineToBr()
-                            )}
-                            ლაზიერი ქართული ბრენდია, რომელიც 2013 წლიდან
+                            {renderHTML(__("client.about_text1",localizations).newLineToBr())}
+                            {/* ლაზიერი ქართული ბრენდია, რომელიც 2013 წლიდან
                             ოპერირებს ბაზარზე და ქმნის ინდივიდუალურ მოთხოვნებზე
                             მორგებულ ავეჯს, როგორც კორპორატიული
                             მომხმარებლებისთვის, ისე ფიზიკური პირებისთვისაც.
                             საწარმო აღჭურვილია უახლესი ევროპული დანადგარებით და
                             მუშაობს მაღალი ხარისხის ხის, კორიანის (DuPont's
                             Corian), ნეოლითის (The Size's Neolith), მეტალისა და
-                            კომპოზიტური მასალებით.
+                            კომპოზიტური მასალებით. */}
                         </p>
                         <img
                             src={images[1]}
@@ -68,20 +58,9 @@ const About = ({ seo, images }) => {
                             className="mb-20 max-h-96"
                         />
                         <div className=" lg:text-5xl text-3xl mb-10  mt-2">
-                            {renderHTML(
-                                __(
-                                    "client.about_h2",
-                                    localizations
-                                ).newLineToBr()
-                            )}
-                        </div>
+                            {renderHTML(__("client.about_h2",localizations).newLineToBr())}</div>
                         <p className="opacity-50 text-justify mb-14 max-w-md">
-                            {renderHTML(
-                                __(
-                                    "client.about_text2",
-                                    localizations
-                                ).newLineToBr()
-                            )}
+                            {renderHTML(__("client.about_text2",localizations).newLineToBr())}
                         </p>
                         <div className="flex mb-5">
                             <button
@@ -116,23 +95,13 @@ const About = ({ seo, images }) => {
                                     )}
                                 </p>
                                 <p className="opacity-50 text-justify mb-5 max-w-md">
-                                    {renderHTML(
-                                        __(
-                                            "client.about_tab1_p2",
-                                            localizations
-                                        ).newLineToBr()
-                                    )}
+                                    {renderHTML(__("client.about_tab1_p2",localizations).newLineToBr())}
                                 </p>
                             </>
                         ) : (
                             <>
                                 <p className="opacity-50 text-justify mb-5 max-w-md">
-                                    {renderHTML(
-                                        __(
-                                            "client.about_tab2_p1",
-                                            localizations
-                                        ).newLineToBr()
-                                    )}
+                                    {renderHTML(__("client.about_tab2_p1",localizations).newLineToBr())}
                                 </p>
                             </>
                         )}
