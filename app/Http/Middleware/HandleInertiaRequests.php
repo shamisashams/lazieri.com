@@ -55,7 +55,7 @@ class HandleInertiaRequests extends Middleware
 
         $result = $this->buildTree($categories);
 
-        $info = Setting::with(['translation'])->get();
+        $info = Setting::with(['translations'])->get();
 
         //dd($info);
         $_result = [];
