@@ -321,13 +321,13 @@ $traverse = function ($categories, $prefix = '-') use (&$traverse,$ids) {
                         </label>
                     </div>
 
-                    {{--<div class="form-group">
+                    <div class="form-group">
                         <label class="ckbox">
                             <input type="checkbox" name="popular"
                                    value="true" {{$product->popular ? 'checked' : ''}}>
-                            <span>{{__('admin.popular')}}</span>
+                            <span>{{__('admin.no_details')}}</span>
                         </label>
-                    </div>--}}
+                    </div>
 
                     {{--<div class="form-group">
                         <label class="ckbox">

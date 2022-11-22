@@ -62,7 +62,7 @@ const About = ({ seo, images }) => {
                         <p className="opacity-50 text-justify mb-14 max-w-md">
                             {renderHTML(__("client.about_text2",localizations).newLineToBr())}
                         </p>
-                        <div className="flex mb-5">
+                        {/*<div className="flex mb-5">
                             <button
                                 onClick={() => setMvContent(0)}
                                 className={`text-lg mr-5 ${
@@ -104,7 +104,7 @@ const About = ({ seo, images }) => {
                                     {renderHTML(__("client.about_tab2_p1",localizations).newLineToBr())}
                                 </p>
                             </>
-                        )}
+                        )}*/}
                     </div>
                 </div>
             </>

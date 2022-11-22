@@ -112,7 +112,7 @@ const Projects = ({ seo }) => {
                                     </Link>
                                 );
                             })}
-                            <Link
+                            {/*<Link
                                 key={0}
                                 className={`inline-block  group-hover:mr-5  whitespace-nowrap mb-3 mr-5 ${
                                     pathname ===
@@ -123,7 +123,7 @@ const Projects = ({ seo }) => {
                                 href={route("client.category.special")}
                             >
                                 {__("client.special_offer", localizations)}
-                            </Link>
+                            </Link>*/}
                         </div>
                     </div>
                     <div className="flex justify-between lg:items-center mt-5 flex-col lg:flex-row">
@@ -142,7 +142,11 @@ const Projects = ({ seo }) => {
                                 key={index}
                                 className="lg:w-3/4 mx-auto border-b mb-10 pb-5 break-inside-avoid"
                             >
-                                <Link
+                                {parseInt(item.popular) === 1 ?<img
+                                    className="w-full"
+                                    src={item.image}
+                                    alt=""
+                                />: <Link
                                     href={route(
                                         "client.product.show",
                                         item.slug
@@ -153,7 +157,7 @@ const Projects = ({ seo }) => {
                                         src={item.image}
                                         alt=""
                                     />
-                                </Link>
+                                </Link>}
                                 <div className="flex justify-between text-sm opacity-50 mb-2 mt-6  ">
                                     <span>{item.categories[0].title}</span>
                                     <span>
