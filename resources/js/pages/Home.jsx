@@ -34,7 +34,7 @@ const Home = ({ seo }) => {
                                 <div className="relative w-full sm:h-80 h-60 overflow-hidden mb-4">
                                     <img
                                         className="w-full h-full object-cover scale-110  group-hover:scale-100 transition-all duration-500"
-                                        src={item.file}
+                                        src={item.thumb}
                                         alt=""
                                     />
                                     <div className="absolute left-0 top-0 w-full h-full bg-gray-900/[0.3] flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
@@ -184,7 +184,7 @@ const Home = ({ seo }) => {
                                 >
                                     <img
                                         className="w-full h-full object-cover"
-                                        src={item.img}
+                                        src={item.thumb}
                                         alt=""
                                     />
                                     <div className="absolute w-full h-full left-0 top-0 bg-white opacity-0 group-hover:opacity-50 transition-all duration-500"></div>

@@ -87,7 +87,7 @@ class HomeController extends Controller
         $galleries = Gallery::with('filesHome')->where('status',1)->get();
         if(count($galleries)){
             foreach ($galleries[0]->filesHome as $image){
-                $_gallery[] = ['img' => asset($image->getFileUrlAttribute()), 'link' => '/'];
+                $_gallery[] = ['img' => asset($image->getFileUrlAttribute()), 'link' => '/','thumb' => $image->thumb_url_full];
             }
         }
 

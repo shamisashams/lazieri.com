@@ -144,7 +144,7 @@ const Projects = ({ seo }) => {
                             >
                                 {parseInt(item.popular) === 1 ?<img
                                     className="w-full"
-                                    src={item.image}
+                                    src={item.thumb}
                                     alt=""
                                 />: <Link
                                     href={route(
@@ -154,7 +154,7 @@ const Projects = ({ seo }) => {
                                 >
                                     <img
                                         className="w-full"
-                                        src={item.image}
+                                        src={item.thumb}
                                         alt=""
                                     />
                                 </Link>}

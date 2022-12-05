@@ -96,7 +96,7 @@ class GalleryController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $product = $this->galleryRepository->saveFiles($gallery->id, $request);
+            $product = $this->galleryRepository->saveFiles($gallery->id, $request,720,320);
         }
 
         return redirect(locale_route('gallery.edit', $gallery->id))->with('success', __('admin.create_successfully'));
@@ -162,7 +162,7 @@ class GalleryController extends Controller
 
         $this->galleryRepository->update($gallery->id, $saveData);
 
-        $this->galleryRepository->saveFiles($gallery->id, $request);
+        $this->galleryRepository->saveFiles($gallery->id, $request,720,480);
 
 
         return redirect(locale_route('gallery.index', $gallery->id))->with('success', __('admin.update_successfully'));

@@ -60,6 +60,7 @@ class CategoryController extends Controller
                 }
             }
             $product['image'] = $product->latestImage ? asset($product->latestImage->getFileUrlAttribute()) : null;
+            $product['thumb'] = $product->latestImage ? $product->latestImage->thumb_url_full : null;
             $product['attributes'] = $_result;
         }
 
@@ -124,6 +125,7 @@ class CategoryController extends Controller
                 }
             }
             $product['image'] = $product->latestImage ? asset($product->latestImage->getFileUrlAttribute()) : null;
+            $product['thumb'] = $product->latestImage ? $product->latestImage->thumb_url_full : null;
             $product['attributes'] = $_result;
         }
 

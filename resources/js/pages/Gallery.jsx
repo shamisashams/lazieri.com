@@ -119,7 +119,7 @@ const Gallery = ({ seo }) => {
                                 >
                                     <img
                                         className="w-full h-full object-cover"
-                                        src={item.file_url_full}
+                                        src={item.thumb_url_full}
                                         alt=""
                                     />
                                     <div className="absolute w-full h-full left-0 top-0 bg-white opacity-0 group-hover:opacity-50 transition-all duration-500"></div>

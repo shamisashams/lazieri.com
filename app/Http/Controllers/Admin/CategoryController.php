@@ -92,7 +92,7 @@ class CategoryController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $category = $this->categoryRepository->saveFiles($category->id, $request);
+            $category = $this->categoryRepository->saveFiles($category->id, $request,720,320);
         }
 
 
@@ -162,7 +162,7 @@ class CategoryController extends Controller
 
         // Save Files
 
-            $category = $this->categoryRepository->saveFiles($category->id, $request);
+            $category = $this->categoryRepository->saveFiles($category->id, $request,720,320);
 
         //dd(count($data));
 
