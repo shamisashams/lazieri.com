@@ -49,13 +49,17 @@ Route::prefix('{locale?}')
                 // Category
                 Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
                 Route::get('category/{category}/destroy', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.destroy');
+                Route::post('category/{category?}/upload-cropped', [\App\Http\Controllers\Admin\CategoryController::class, 'uploadCropped'])->name('category.crop-upload');
 //
                 // Product
                 Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
                 Route::get('product/{product}/destroy', [\App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('product.destroy');
+                Route::post('product/{product?}/upload-cropped', [\App\Http\Controllers\Admin\ProductController::class, 'uploadCropped'])->name('product.crop-upload');
+
 //                // Gallery
                 Route::resource('gallery', GalleryController::class);
                 Route::get('gallery/{gallery}/destroy', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+                Route::post('gallery/{gallery?}/upload-cropped', [\App\Http\Controllers\Admin\GalleryController::class, 'uploadCropped'])->name('gallery.crop-upload');
 
 
                 //Partners
@@ -67,10 +71,12 @@ Route::prefix('{locale?}')
                 // Slider
                 Route::resource('slider', SliderController::class);
                 Route::get('slider/{slider}/destroy', [SliderController::class, 'destroy'])->name('slider.destroy');
+                Route::post('slider/{slider?}/upload-cropped', [\App\Http\Controllers\Admin\SliderController::class, 'uploadCropped'])->name('slider.crop-upload');
 
                 // Page
                 Route::resource('page', PageController::class);
                 Route::get('page/{page}/destroy', [PageController::class, 'destroy'])->name('page.destroy');
+                Route::post('page-section/upload-cropped', [\App\Http\Controllers\Admin\PageController::class, 'uploadCropped'])->name('page-section.crop-upload');
 
 
                 Route::get('setting/active',[SettingController::class,'setActive'])->name('setting.active');
@@ -93,6 +99,7 @@ Route::prefix('{locale?}')
 
                 Route::resource('team', \App\Http\Controllers\Admin\TeamController::class);
                 Route::get('team/{team}/destroy', [\App\Http\Controllers\Admin\TeamController::class, 'destroy'])->name('team.destroy');
+                Route::post('team/{team?}/upload-cropped', [\App\Http\Controllers\Admin\TeamController::class, 'uploadCropped'])->name('team.crop-upload');
 
             });
         });

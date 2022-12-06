@@ -95,6 +95,10 @@ class CategoryController extends Controller
             $category = $this->categoryRepository->saveFiles($category->id, $request,720,320);
         }
 
+        if ($request->post('base64_img')) {
+
+            $gallery = $this->categoryRepository->uploadCropped($request, $category->id,720,320);
+        }
 
         return redirect(locale_route('category.index', $category->id))->with('success', __('admin.create_successfully'));
 
@@ -222,5 +226,9 @@ class CategoryController extends Controller
 
         header('Content-Type: application/json');
         echo json_encode($json);
+    }
+
+    public function uploadCropped(Request $request, $locale, Category $category){
+        $this->categoryRepository->uploadCropped($request, $category->id,720,320);
     }
 }

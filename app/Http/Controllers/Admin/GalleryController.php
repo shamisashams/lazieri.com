@@ -96,7 +96,12 @@ class GalleryController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $product = $this->galleryRepository->saveFiles($gallery->id, $request,720,320);
+            $gallery = $this->galleryRepository->saveFiles($gallery->id, $request,720,480);
+        }
+
+        if ($request->post('base64_img')) {
+
+            $gallery = $this->galleryRepository->uploadCropped($request, $gallery->id,720,480);
         }
 
         return redirect(locale_route('gallery.edit', $gallery->id))->with('success', __('admin.create_successfully'));
@@ -181,5 +186,9 @@ class GalleryController extends Controller
             return redirect(locale_route('gallery.show', $gallery->id))->with('danger', __('admin.not_delete_message'));
         }
         return redirect(locale_route('gallery.index'))->with('success', __('admin.delete_message'));
+    }
+
+    public function uploadCropped(Request $request, $locale, Gallery $gallery){
+        $this->galleryRepository->uploadCropped($request, $gallery->id,720,480);
     }
 }

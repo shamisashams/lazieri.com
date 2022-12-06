@@ -22,6 +22,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Arr;
 use ReflectionException;
@@ -329,5 +330,9 @@ class ProductController extends Controller
             return redirect(locale_route('product.show', $product->id))->with('danger', __('admin.not_delete_message'));
         }
         return redirect(locale_route('product.index'))->with('success', __('admin.delete_message'));
+    }
+
+    public function uploadCropped(Request $request, $locale, Product $product){
+        $this->productRepository->uploadCropped($request, $product->id);
     }
 }

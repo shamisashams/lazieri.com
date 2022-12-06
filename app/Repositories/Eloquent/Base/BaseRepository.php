@@ -159,7 +159,7 @@ class BaseRepository implements EloquentRepositoryInterface
      * @return Model
      * @throws \ReflectionException
      */
-    public function saveFiles(int $id, $request, $width = 720, $height = 800): Model
+    public function saveFiles(int $id, $request, $width = 800, $height = 800): Model
     {
         $this->model = $this->findOrFail($id);
 
@@ -252,6 +252,49 @@ class BaseRepository implements EloquentRepositoryInterface
             }
         }
 
+        return $this->model;
+    }
+
+
+    public function uploadCropped($request, $id, $width = 800, $height = 800){
+        //dd($product);
+        $this->model = $this->findOrFail($id);
+        $data = explode(',', $request->post('base64_img'));
+// Decode the base64 data
+        $data = base64_decode($data[1]);
+
+
+
+        if ($request->post('base64_img')) {
+            // Get Name Of model
+            $reflection = new ReflectionClass(get_class($this->model));
+            $modelName = $reflection->getShortName();
+
+
+            $imagename = date('Ymdhis') .'crop.png';
+            $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $this->model->id;
+
+            $image =  ImageResize::createFromString($data);
+            $image->resizeToHeight($height);
+
+            //$image->crop($width, $height, false, ImageResize::CROPCENTER);
+            //$image->save(date('Ymhs') . $file->getClientOriginalName());
+            $img = $image->getImageAsString();
+
+            $thumb = 'public/' . $modelName . '/' . $this->model->id .'/thumb/'.$imagename;
+
+            Storage::put('public/' . $modelName . '/' . $this->model->id . '/' . $imagename,$data);
+
+            Storage::put($thumb,$img);
+
+            $this->model->files()->create([
+                'title' => $imagename,
+                'path' => 'storage/' . $modelName . '/' . $this->model->id,
+                'format' => 'png',
+                'type' => File::FILE_DEFAULT,
+            ]);
+
+        }
         return $this->model;
     }
 }

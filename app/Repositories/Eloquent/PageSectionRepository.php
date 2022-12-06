@@ -14,6 +14,7 @@ use App\Models\File;
 use App\Models\PageSection;
 use App\Repositories\Eloquent\Base\BaseRepository;
 use App\Repositories\PageSectionRepositoryInterface;
+use Gumlet\ImageResize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use ReflectionClass;
@@ -74,6 +75,50 @@ class PageSectionRepository extends BaseRepository implements PageSectionReposit
             }
         }
 
+        return $this->model;
+    }
+
+    public function saveFile2(int $id, $request,$height = 800, $width = 800): Model
+    {
+        //dd($request->file('image'));
+
+        $this->model = $this->findOrFail($id);
+        $data = explode(',', $request->post('base64_img'));
+// Decode the base64 data
+        $data = base64_decode($data[1]);
+
+
+
+        if ($request->post('base64_img')) {
+            // Get Name Of model
+            $reflection = new ReflectionClass(get_class($this->model));
+            $modelName = $reflection->getShortName();
+
+
+            $imagename = date('Ymdhis') .'crop.png';
+            $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $this->model->id;
+
+            $image =  ImageResize::createFromString($data);
+            $image->resizeToHeight($height);
+
+            //$image->crop($width, $height, false, ImageResize::CROPCENTER);
+            //$image->save(date('Ymhs') . $file->getClientOriginalName());
+            $img = $image->getImageAsString();
+
+            $thumb = 'public/' . $modelName . '/' . $this->model->id .'/thumb/'.$imagename;
+
+            Storage::put('public/' . $modelName . '/' . $this->model->id . '/' . $imagename,$data);
+
+            Storage::put($thumb,$img);
+
+            $this->model->files()->create([
+                'title' => $imagename,
+                'path' => 'storage/' . $modelName . '/' . $this->model->id,
+                'format' => 'png',
+                'type' => File::FILE_DEFAULT,
+            ]);
+
+        }
         return $this->model;
     }
 

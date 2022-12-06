@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SliderRequest;
 use App\Models\Slider;
 use App\Repositories\SliderRepositoryInterface;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class SliderController extends Controller
@@ -83,7 +84,12 @@ class SliderController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $slider = $this->slideRepository->saveFiles($slider->id, $request);
+            $slider = $this->slideRepository->saveFiles($slider->id, $request,800,1000);
+        }
+
+        if ($request->post('base64_img')) {
+
+            $slider = $this->slideRepository->uploadCropped($request, $slider->id,720,1000);
         }
 
         return redirect(locale_route('slider.index', $slider->id))->with('success', __('admin.create_successfully'));
@@ -167,5 +173,9 @@ class SliderController extends Controller
             return redirect(locale_route('slider.show', $slider->id))->with('danger', __('admin.not_delete_message'));
         }
         return redirect(locale_route('slider.index'))->with('success', __('admin.delete_message'));
+    }
+
+    public function uploadCropped(Request $request, $locale, Slider $slider){
+        $this->slideRepository->uploadCropped($request, $slider->id,720,1000);
     }
 }

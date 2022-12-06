@@ -11,6 +11,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Arr;
 
@@ -116,6 +117,11 @@ class PageController extends Controller
 
 
         return redirect(locale_route('page.index', $page->id))->with('success', __('admin.update_successfully'));
+    }
+
+
+    public function uploadCropped(Request $request){
+        $this->pageSectionRepository->saveFile2($request->id, $request);
     }
 
 }

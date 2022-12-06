@@ -89,7 +89,12 @@ class TeamController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $slider = $this->teamRepository->saveFiles($slider->id, $request);
+            $slider = $this->teamRepository->saveFiles($slider->id, $request,null,480);
+        }
+
+        if ($request->post('base64_img')) {
+
+            $slider = $this->teamRepository->uploadCropped($request, $slider->id,720,480);
         }
 
         return redirect(locale_route('team.index', $slider->id))->with('success', __('admin.create_successfully'));
@@ -144,7 +149,7 @@ class TeamController extends Controller
 
         $this->teamRepository->update($team->id, $saveData);
 
-        $this->teamRepository->saveFiles($team->id, $request);
+        $this->teamRepository->saveFiles($team->id, $request,null,480);
 
 
         return redirect(locale_route('team.index', $team->id))->with('success', __('admin.update_successfully'));
@@ -158,11 +163,15 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy(string $locale, Stock $stock)
+    public function destroy(string $locale, Team $team)
     {
-        if (!$this->teamRepository->delete($stock->id)) {
-            return redirect(locale_route('team.index', $stock->id))->with('danger', __('admin.not_delete_message'));
+        if (!$this->teamRepository->delete($team->id)) {
+            return redirect(locale_route('team.index', $team->id))->with('danger', __('admin.not_delete_message'));
         }
         return redirect(locale_route('team.index'))->with('success', __('admin.delete_message'));
+    }
+
+    public function uploadCropped(Request $request, $locale, Team $team){
+        $this->teamRepository->uploadCropped($request, $team->id,720,480);
     }
 }
