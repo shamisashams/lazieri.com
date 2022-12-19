@@ -36,7 +36,7 @@ class HomeController extends Controller
             $itm = [
                 'title' => $item->title,
                 'description' => $item->description,
-                'file' => $item->file ? asset($item->file->getFileUrlAttribute()):null
+                'file' => $item->file ? asset($item->file->thumb_url_full):null
             ];
             $_slider[] = $itm;
         }
