@@ -23,7 +23,7 @@ class HomeController extends Controller
         $images = [];
         foreach ($page->sections as $sections){
             if($sections->file){
-                $images[] = asset($sections->file->getFileUrlAttribute());
+                $images[] = asset($sections->file->thumb_full_url());
             } else {
                 $images[] = null;
             }
