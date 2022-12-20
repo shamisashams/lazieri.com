@@ -115,6 +115,11 @@ class PageController extends Controller
         $this->pageSectionRepository->saveFile($page->id, $request);
 
 
+        if($request->post('base64_img')){
+            foreach ($request->post('base64_img') as $id => $data){
+                $this->pageSectionRepository->saveFile2($id, $data);
+            }
+        }
 
         return redirect(locale_route('page.index', $page->id))->with('success', __('admin.update_successfully'));
     }

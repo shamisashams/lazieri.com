@@ -253,12 +253,12 @@
                                             <div>
                                                 <h6 class="card-title mb-1">@lang('admin.product_image_crop_upload')</h6>
                                             </div>
-                                            <div>
+                                            <div id="img_list_{{$item->id}}">
                                                 <p>Select a image file to crop</p>
                                                 <input type="file" class="inputFile" data-id="{{$item->id}}" id="inputFile_{{$item->id}}" accept="image/png, image/jpeg">
                                             </div>
                                             <div id="actions_{{$item->id}}" style="display: none;">
-                                                <button class="cropBtn" id="cropBtn_{{$item->id}}" type="button">Crop & Upload </button>
+                                                <button class="cropBtn" id="cropBtn_{{$item->id}}" type="button">Crop </button>
                                             </div>
                                             <div id="croppieMount_{{$item->id}}" class="p-relative"></div>
                                         </div>
@@ -475,13 +475,16 @@
                     // Sends a POST request to upload_cropped.php
 
                     console.log(formData);
-                    fetch('{{route('page-section.crop-upload')}}', {
+                    /*fetch('', {
                         method: 'POST',
                         body: formData
                     }).then((data) => {
                         //console.log(data.text());
                         location.reload()
-                    });
+                    });*/
+                    croppie.destroy();
+                    $('#img_list_' + id).html('<span class="img_itm"><input type="hidden" name="base64_img[' + id + ']" value="' + imageResult + '"><img height="200" src="' + imageResult + '"><a class="delete_img" href="javascript:;">delete</a><span>');
+                    alert('cropped')
 
                 });
             });

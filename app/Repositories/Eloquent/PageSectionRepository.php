@@ -78,18 +78,18 @@ class PageSectionRepository extends BaseRepository implements PageSectionReposit
         return $this->model;
     }
 
-    public function saveFile2(int $id, $request,$height = 800, $width = 800): Model
+    public function saveFile2(int $id, $base64,$height = 800, $width = 800): Model
     {
         //dd($request->file('image'));
 
         $this->model = $this->findOrFail($id);
-        $data = explode(',', $request->post('base64_img'));
+        $data = explode(',', $base64);
 // Decode the base64 data
         $data = base64_decode($data[1]);
 
 
 
-        if ($request->post('base64_img')) {
+        if ($base64) {
             // Get Name Of model
             $reflection = new ReflectionClass(get_class($this->model));
             $modelName = $reflection->getShortName();
