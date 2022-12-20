@@ -46,3 +46,5 @@
 
 		<!-- exported JS -->
 		<script src="{{asset('admin/assets/js/exported.js')}}"></script>
+
+        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>--}}

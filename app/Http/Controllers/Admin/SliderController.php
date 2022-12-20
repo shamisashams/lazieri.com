@@ -156,6 +156,11 @@ class SliderController extends Controller
         $this->slideRepository->saveFiles($slider->id, $request);
 
 
+        if ($request->post('base64_img')) {
+
+            $slider = $this->slideRepository->uploadCropped($request, $slider->id,720,1000);
+        }
+
         return redirect(locale_route('slider.index', $slider->id))->with('success', __('admin.update_successfully'));
     }
 
