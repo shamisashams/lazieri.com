@@ -402,6 +402,8 @@
                     body: formData
                 }).then(() => {
                     location.reload()
+                }).catch(function(error) {
+                    console.log(error);
                 });
                 @else
                 croppie.destroy();
