@@ -267,32 +267,37 @@ class BaseRepository implements EloquentRepositoryInterface
 
         if ($request->post('base64_img')) {
             // Get Name Of model
-            $reflection = new ReflectionClass(get_class($this->model));
-            $modelName = $reflection->getShortName();
+            try {
+                $reflection = new ReflectionClass(get_class($this->model));
+                $modelName = $reflection->getShortName();
 
 
-            $imagename = date('Ymdhis') .'crop.png';
-            $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $this->model->id;
+                $imagename = date('Ymdhis') .'crop.png';
+                $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $this->model->id;
 
-            $image =  ImageResize::createFromString($data);
-            $image->resizeToHeight($height);
+                $image =  ImageResize::createFromString($data);
+                $image->resizeToHeight($height);
 
-            //$image->crop($width, $height, false, ImageResize::CROPCENTER);
-            //$image->save(date('Ymhs') . $file->getClientOriginalName());
-            $img = $image->getImageAsString();
+                //$image->crop($width, $height, false, ImageResize::CROPCENTER);
+                //$image->save(date('Ymhs') . $file->getClientOriginalName());
+                $img = $image->getImageAsString();
 
-            $thumb = 'public/' . $modelName . '/' . $this->model->id .'/thumb/'.$imagename;
+                $thumb = 'public/' . $modelName . '/' . $this->model->id .'/thumb/'.$imagename;
 
-            Storage::put('public/' . $modelName . '/' . $this->model->id . '/' . $imagename,$data);
+                Storage::put('public/' . $modelName . '/' . $this->model->id . '/' . $imagename,$data);
 
-            Storage::put($thumb,$img);
+                Storage::put($thumb,$img);
 
-            $this->model->files()->create([
-                'title' => $imagename,
-                'path' => 'storage/' . $modelName . '/' . $this->model->id,
-                'format' => 'png',
-                'type' => File::FILE_DEFAULT,
-            ]);
+                $this->model->files()->create([
+                    'title' => $imagename,
+                    'path' => 'storage/' . $modelName . '/' . $this->model->id,
+                    'format' => 'png',
+                    'type' => File::FILE_DEFAULT,
+                ]);
+            } catch (\Exception $exception){
+                dd($exception->getMessage());
+            }
+
 
         }
         return $this->model;
