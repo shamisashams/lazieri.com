@@ -172,7 +172,7 @@
                         <input type="file" id="inputFile" accept="image/png, image/jpeg">
                     </div>
                     <div id="actions" style="display: none;">
-                        <button id="cropBtn" type="button">Crop @if($model->created_at)& Upload @endif</button>
+                        <button id="cropBtn" type="button">Crop {{--@if($model->created_at)& Upload @endif--}}</button>
                     </div>
                     <div id="croppieMount" class="p-relative"></div>
                 </div>
@@ -388,18 +388,18 @@
 
                 //document.getElementById('inp_crop_img').value = imageResult;
                 // Sends a POST request to upload_cropped.php
-                @if($model->created_at)
+                {{--@if($model->created_at)
                 fetch('{{route('team.crop-upload',$model)}}', {
                     method: 'POST',
                     body: formData
                 }).then(() => {
                     location.reload()
                 });
-                @else
+                @else--}}
                 croppie.destroy();
                 $('#img_list').html('<span class="img_itm"><input type="hidden" name="base64_img" value="' + imageResult + '"><img height="200" src="' + imageResult + '"><a class="delete_img" href="javascript:;">delete</a><span>');
                 alert('cropped')
-                @endif
+                {{--@endif--}}
             });
         });
 

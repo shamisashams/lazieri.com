@@ -152,6 +152,11 @@ class TeamController extends Controller
         $this->teamRepository->saveFiles($team->id, $request,null,480);
 
 
+        if ($request->post('base64_img')) {
+
+            $team = $this->teamRepository->uploadCropped($request, $team->id,720,480);
+        }
+
         return redirect(locale_route('team.index', $team->id))->with('success', __('admin.update_successfully'));
     }
 

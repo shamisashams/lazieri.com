@@ -169,6 +169,10 @@ class GalleryController extends Controller
 
         $this->galleryRepository->saveFiles($gallery->id, $request,720,480);
 
+        if ($request->post('base64_img')) {
+
+            $gallery = $this->galleryRepository->uploadCropped($request, $gallery->id,720,480);
+        }
 
         return redirect(locale_route('gallery.index', $gallery->id))->with('success', __('admin.update_successfully'));
     }

@@ -150,6 +150,10 @@ class ProductController extends Controller
             $product = $this->productRepository->saveFiles($product->id, $request);
         }
 
+        if ($request->post('base64_img')) {
+
+            $product = $this->productRepository->uploadCropped($request, $product->id);
+        }
 
         //save product attributes
         $attr = [];
@@ -264,6 +268,11 @@ class ProductController extends Controller
         $this->productRepository->saveFiles($product->id, $request);
 
         $product->categories()->sync($saveData['categories'] ?? []);
+
+        if ($request->post('base64_img')) {
+
+            $product = $this->productRepository->uploadCropped($request, $product->id);
+        }
 
 
         //update product attributes

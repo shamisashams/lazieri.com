@@ -168,6 +168,11 @@ class CategoryController extends Controller
 
             $category = $this->categoryRepository->saveFiles($category->id, $request,720,320);
 
+        if ($request->post('base64_img')) {
+
+            $gallery = $this->categoryRepository->uploadCropped($request, $category->id,720,320);
+        }
+
         //dd(count($data));
 
 
