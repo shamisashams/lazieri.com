@@ -267,6 +267,7 @@ class BaseRepository implements EloquentRepositoryInterface
             // Get Name Of model
             try {
 
+                ini_set('memory_limit',-1);
                 $data = explode(',', $request->post('base64_img'));
 // Decode the base64 data
                 $data = base64_decode($data[1]);
