@@ -401,7 +401,7 @@
                     method: 'POST',
                     body: formData
                 }).then(() => {
-                    location.reload()
+                    //location.reload()
                 }).catch(function(error) {
                     console.log(error);
                 });
