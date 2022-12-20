@@ -259,15 +259,18 @@ class BaseRepository implements EloquentRepositoryInterface
     public function uploadCropped($request, $id, $width = 800, $height = 800){
         //dd($product);
         $this->model = $this->findOrFail($id);
-        $data = explode(',', $request->post('base64_img'));
-// Decode the base64 data
-        $data = base64_decode($data[1]);
+
 
 
 
         if ($request->post('base64_img')) {
             // Get Name Of model
             try {
+
+                $data = explode(',', $request->post('base64_img'));
+// Decode the base64 data
+                $data = base64_decode($data[1]);
+
                 $reflection = new ReflectionClass(get_class($this->model));
                 $modelName = $reflection->getShortName();
 
