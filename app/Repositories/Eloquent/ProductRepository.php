@@ -42,7 +42,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->orWhere('special_price_tag',1)
             ->whereHas('categories',function ($query){
             $query->where('status',1);
-        })->with(['latestImage','translation'])->inRandomOrder()->get();
+        })->with(['latestImage','translation','attribute_values'])->inRandomOrder()->get();
 
         //dd($products);
         return $products;
