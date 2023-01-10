@@ -92,12 +92,12 @@ class CategoryController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $category = $this->categoryRepository->saveFiles($category->id, $request,720,320);
+            $category = $this->categoryRepository->saveFiles($category->id, $request,720,720);
         }
 
         if ($request->post('base64_img')) {
 
-            $gallery = $this->categoryRepository->uploadCropped($request, $category->id,720,320);
+            $gallery = $this->categoryRepository->uploadCropped($request, $category->id,720,720);
         }
 
         return redirect(locale_route('category.index', $category->id))->with('success', __('admin.create_successfully'));
@@ -166,11 +166,11 @@ class CategoryController extends Controller
 
         // Save Files
 
-            $category = $this->categoryRepository->saveFiles($category->id, $request,720,320);
+            $category = $this->categoryRepository->saveFiles($category->id, $request,720,720);
 
         if ($request->post('base64_img')) {
 
-            $gallery = $this->categoryRepository->uploadCropped($request, $category->id,720,320);
+            $gallery = $this->categoryRepository->uploadCropped($request, $category->id,720,720);
         }
 
         //dd(count($data));
