@@ -234,6 +234,6 @@ class CategoryController extends Controller
     }
 
     public function uploadCropped(Request $request, $locale, Category $category){
-        $this->categoryRepository->uploadCropped($request, $category->id,720,320);
+        $this->categoryRepository->uploadCropped($request, $category->id,720,720);
     }
 }
