@@ -134,7 +134,7 @@ const Home = ({ seo }) => {
                                 </div>
                                 <Link
                                     className="text-lg font-bold"
-                                    href={route("client.category.special")}
+                                    href={route("client.category.show",'Specialoffer')}
                                 >
                                     {__("client.view_all", localizations)}
                                     <img
