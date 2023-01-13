@@ -34,7 +34,7 @@ class PageSectionRepository extends BaseRepository implements PageSectionReposit
     }
 
 
-    public function saveFile(int $id, $request): Model
+    public function saveFile(int $id, $request,$height = 800, $width = 800): Model
     {
         //dd($request->file('image'));
 
@@ -42,10 +42,17 @@ class PageSectionRepository extends BaseRepository implements PageSectionReposit
             foreach ($request->file('image') as $key => $file){
                 $model = $this->model->where('id',$key)->first();
 
-                if ($model->file){
-                    Storage::delete($model->file->getFileUrlAttribute());
-                    $model->file->delete();
+
+                foreach ($model->files as $file){
+                    if ($file){
+                        if (Storage::exists('public/PageSection/' . $key . '/' . $file->title)) {
+                            Storage::delete('public/PageSection/' . $key . '/' . $file->title);
+                        }
+                        $file->delete();
+                    }
                 }
+
+
 
 
             }
@@ -62,9 +69,24 @@ class PageSectionRepository extends BaseRepository implements PageSectionReposit
             //dd($modelName);
 
             foreach ($request->file('image') as $key => $file) {
+
+                //dd($file);
+                $image = new ImageResize($file);
+                $image->resizeToHeight($height);
+
+                //$image->crop($width, $height, false, ImageResize::CROPCENTER);
+                //$image->save(date('Ymhs') . $file->getClientOriginalName());
+                $img = $image->getImageAsString();
+
+                //dd($img);
                 $imagename = date('Ymhs') . str_replace(' ', '', $file->getClientOriginalName());
                 $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $key;
+
+                $thumb = 'public/' . $modelName . '/' . $key .'/thumb/'.$imagename;
+
                 $request->file('image')[$key]->move($destination, $imagename);
+                 Storage::put($thumb,$img);
+
                 $model = $this->model->where('id',$key)->first();
                 $model->file()->create([
                     'title' => $imagename,
