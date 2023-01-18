@@ -78,12 +78,9 @@ const Contact = ({ seo, info }) => {
                     </div>
                     <iframe
                         className="md:mx-10 md:w-1/2 w-full md:max-w-3xl mt-10 md:mt-0"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1053.062943750575!2d44.774606994703205!3d41.709473858122436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd2bb99a4d7%3A0x1bda3c277b2c242e!2s7%20Ilia%20Chavchavadze%20Avenue%2C%20T&#39;bilisi!5e0!3m2!1sen!2sge!4v1662362521644!5m2!1sen!2sge"
-                        style={{ border: "0" }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4207.548719465917!2d44.79043846256371!3d41.78119995478776!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40446db8d8e53d85%3A0x23ff26284a9261d9!2zQXV0b2JhbmkgUGVpa3JlYmkg4oCiIOGDkOGDleGDouGDneGDkeGDkOGDnOGDmCDhg6Thg5Thg5jhg6Xhg6Dhg5Thg5Hhg5g!5e0!3m2!1sen!2sge!4v1674024688755!5m2!1sen!2sge"
+                        style={{border:0}} allowFullScreen="" loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"></iframe>
                     <form
                         onSubmit={handleSubmit}
                         className="max-w-lg lg:mt-0 mt-10"
