@@ -161,7 +161,7 @@ const Projects = ({ seo }) => {
                                 <div className="flex justify-between text-sm opacity-50 mb-2 mt-6  ">
                                     <span>{item.categories[0].title}</span>
                                     <span>
-                                        {__("client.date", localizations)}:{" "}
+                                        {/*{__("client.date", localizations)}:{" "}*/}
                                         {/*{Moment(item.created_at).format(
                                             "DD.MM.YYYY"
                                         )}*/}
