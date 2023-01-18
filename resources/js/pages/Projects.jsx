@@ -162,9 +162,9 @@ const Projects = ({ seo }) => {
                                     <span>{item.categories[0].title}</span>
                                     <span>
                                         {__("client.date", localizations)}:{" "}
-                                        {Moment(item.created_at).format(
+                                        {/*{Moment(item.created_at).format(
                                             "DD.MM.YYYY"
-                                        )}
+                                        )}*/}
                                     </span>
                                 </div>
                                 <div>{item.title}</div>
