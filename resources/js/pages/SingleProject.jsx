@@ -37,14 +37,14 @@ const SingleProject = ({ seo }) => {
                 <section className="grid md:grid-cols-2 lg:gap-20 gap-10 sm:my-20 my-10">
                     <div className="flex w-full justify-between">
                         <div>
-                            <div className="opacity-50 ">
+                            {/*<div className="opacity-50 ">
                                 {__("client.date", localizations)}
-                            </div>
-                            <div className="sm:text-2xl text-lg sm:mb-5 mb-3">
+                            </div>*/}
+                            {/*<div className="sm:text-2xl text-lg sm:mb-5 mb-3">
                                 {Moment(product.created_at).format(
                                     "DD.MM.YYYY"
                                 )}
-                            </div>
+                            </div>*/}
                             {/*<div className="opacity-50 ">Customer</div>
                           <div className="sm:text-2xl text-lg sm:mb-5 mb-3">
                               Customer name
