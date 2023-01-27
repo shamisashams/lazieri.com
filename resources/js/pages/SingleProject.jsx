@@ -25,7 +25,9 @@ const SingleProject = ({ seo }) => {
                     <div className="opacity-50 text-lg mb-3">
                         {category_path[0].title}
                     </div>
-                    <div className=" lg:text-5xl text-4xl">{product.title}</div>
+                    <div className=" lg:text-4xl md:text-3xl  text-2xl">
+                        {product.title}
+                    </div>
                 </section>
                 <section className="lg:h-96 h-72">
                     <img
@@ -91,7 +93,9 @@ const SingleProject = ({ seo }) => {
                             {product.head_1}
                         </div>
                         <p className="text-justify">
-                            {product.text_1 ? renderHTML(product.text_1.newLineToBr()) :null}
+                            {product.text_1
+                                ? renderHTML(product.text_1.newLineToBr())
+                                : null}
                         </p>
                     </div>
                     <div>
@@ -104,7 +108,9 @@ const SingleProject = ({ seo }) => {
                             {product.head_2}
                         </div>
                         <p className="text-justify max-w-md">
-                            {product.text_2 ? renderHTML(product.text_2.newLineToBr()) : null}
+                            {product.text_2
+                                ? renderHTML(product.text_2.newLineToBr())
+                                : null}
                         </p>
                     </div>
                     <div>

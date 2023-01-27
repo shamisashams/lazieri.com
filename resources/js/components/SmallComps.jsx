@@ -18,9 +18,9 @@ export const SocialMedia = () => {
             >
                 <img src="/client/assets/images/sm/2.png" alt="" />
             </a>
-            <a className="transition hover:-translate-y-1" href={info.twitter}>
+            {/* <a className="transition hover:-translate-y-1" href={info.twitter}>
                 <img src="/client/assets/images/sm/3.png" alt="" />
-            </a>
+            </a> */}
         </div>
     );
 };
