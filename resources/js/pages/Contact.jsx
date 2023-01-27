@@ -54,7 +54,6 @@ const Contact = ({ seo, info }) => {
                             <div className="text-slate-500 font-bold mb-2 text-sm">
                                 <BsTelephone className="inline-block mr-3 align-middle" />{" "}
                                 {__("client.phone", localizations)}
-                                number
                             </div>
                             <div className="font-bold text-lg mb-6">
                                 {info.phone}
@@ -62,7 +61,6 @@ const Contact = ({ seo, info }) => {
                             <div className="text-slate-500 font-bold mb-2 text-sm">
                                 <FiSend className="inline-block mr-3 align-middle" />{" "}
                                 {__("client.email", localizations)}
-                                address
                             </div>
                             <div className="font-bold text-lg mb-6">
                                 {info.email}
