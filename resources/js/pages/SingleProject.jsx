@@ -89,9 +89,9 @@ const SingleProject = ({ seo }) => {
                         </div>
                     </div>
                     <div className="max-w-md">
-                        <div className=" lg:text-5xl text-3xl mb-5">
+                        {/*<div className=" lg:text-5xl text-3xl mb-5">
                             {product.head_1}
-                        </div>
+                        </div>*/}
                         <p className="text-justify">
                             {product.text_1
                                 ? renderHTML(product.text_1.newLineToBr())
