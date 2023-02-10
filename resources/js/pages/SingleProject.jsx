@@ -98,9 +98,9 @@ const SingleProject = ({ seo }) => {
                                 : null}
                         </p>
                     </div>
-                    <div>
+                    <div className="md:h-80 overflow-hidden">
                         <img
-                            className="w-full"
+                            className="w-full h-full object-cover"
                             src={present.in_middle_1}
                             alt=""
                         />
@@ -113,8 +113,12 @@ const SingleProject = ({ seo }) => {
                                 : null}
                         </p>
                     </div>
-                    <div>
-                        <img src={present.in_middle_2} alt="" />
+                    <div className="md:h-80 overflow-hidden">
+                        <img
+                            className="w-full h-full object-cover"
+                            src={present.in_middle_2}
+                            alt=""
+                        />
                     </div>
                 </section>
                 <section className="py-20">
