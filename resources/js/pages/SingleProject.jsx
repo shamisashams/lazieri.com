@@ -98,7 +98,7 @@ const SingleProject = ({ seo }) => {
                                 : null}
                         </p>
                     </div>
-                    <div className="md:h-80 overflow-hidden">
+                    <div className="md:h-96 overflow-hidden">
                         <img
                             className="w-full h-full object-cover"
                             src={present.in_middle_1}
@@ -113,7 +113,7 @@ const SingleProject = ({ seo }) => {
                                 : null}
                         </p>
                     </div>
-                    <div className="md:h-80 overflow-hidden">
+                    <div className="md:h-96 overflow-hidden">
                         <img
                             className="w-full h-full object-cover"
                             src={present.in_middle_2}
